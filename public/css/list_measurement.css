@@ -1,0 +1,87 @@
+        /* Style untuk input dengan garis bawah */
+        input.form-control {
+            border: none;
+            /* Menghilangkan border */
+            border-bottom: 1px solid #ccc;
+            /* Menambahkan garis bawah */
+            border-radius: 0;
+            /* Menghilangkan sudut border */
+            box-shadow: none;
+            /* Menghilangkan shadow */
+            background-color: transparent;
+            /* Mengatur background transparan */
+            margin-top: -5px;
+            /* Menyesuaikan posisi input ke atas */
+            padding-top: 15px;
+            /* Menyesuaikan posisi text ke atas */
+        }
+
+        /* Style untuk input saat fokus */
+        input.form-control:focus,
+        select.form-control:focus {
+            border-color: #007bff;
+            /* Warna border saat fokus */
+            box-shadow: none;
+            /* Menghilangkan shadow saat fokus */
+        }
+
+        select.form-control,
+        .select2-container .select2-selection--single {
+            border: none;
+            /* Menghilangkan border */
+            border-bottom: 1px solid #ccc;
+            /* Menambahkan garis bawah */
+            border-radius: 0;
+            /* Menghilangkan sudut border */
+            box-shadow: none;
+            /* Menghilangkan shadow */
+            background-color: transparent;
+            /* Mengatur background transparan */
+            margin-top: -5px;
+            /* Menyesuaikan posisi input ke atas */
+            padding-top: 10px;
+            /* Menyesuaikan posisi text ke atas */
+        }
+
+        /* Style untuk garis bawah pada Select2 */
+        .select2-container .select2-selection--single {
+            height: auto;
+            /* Menyesuaikan tinggi dengan isi */
+            padding: 5px 0;
+            /* Padding atas dan bawah */
+        }
+
+        /* Style untuk garis bawah pada dropdown Select2 */
+        .select2-container .select2-dropdown--below {
+            border-top: 1px solid #ccc;
+            /* Menambahkan garis atas pada dropdown */
+        }
+
+        /* Style untuk garis bawah pada dropdown Select2 yang di atas */
+        .select2-container .select2-dropdown--above {
+            border-bottom: 1px solid #ccc;
+            /* Menambahkan garis bawah pada dropdown */
+        }
+
+        .location-select {
+            width: 100% !important;
+            /* Pastikan select box menggunakan lebar penuh */
+        }
+
+        .btn-active {
+            border: 3px solid rgb(106, 168, 117);
+            background-color: rgb(214, 252, 4);
+        }
+
+        .selected-row td {
+            color: white !important;
+            /* Ubah warna teks menjadi putih saat dipilih */
+        }
+
+        .btn-active:hover {
+            border: 2;
+            border-color: rgba(5, 180, 89, 0.8);
+            background-color: white; 
+            color: rgba(5, 180, 89, 0.8);
+            /* font-weight: bold; */
+        }

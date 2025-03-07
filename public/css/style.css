@@ -1,0 +1,274 @@
+/* ===== Button ===== */
+.btn-flat {
+    border: 2;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.btn-flat:hover {
+    background-color: rgba(166, 169, 167, 0.873);
+}
+
+.btn-flat:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-keluar{
+    border-radius: 0;
+    background-color:grey;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-keluar:hover {
+    border: 2;
+    border-color: grey;
+    background-color: white; 
+    color: black;
+    /* font-weight: bold; */
+}
+
+.btn-update {
+    border-radius: 0;
+    background-color: rgba(4, 102, 222, 0.8);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-update:hover {
+    border: 2;
+    border-color: rgba(4, 102, 222, 0.8);
+    background-color: white; 
+    color: rgba(4, 102, 222, 0.8);
+    /* font-weight: bold; */
+}
+
+.btn-hapus {
+    border-radius: 0;
+    background-color: rgba(255, 0, 0, 0.483);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-hapus:hover {
+    border: 2;
+    border-color: rgba(255, 0, 0, 0.483);
+    background-color: white; 
+    color: rgba(255, 0, 0, 0.483);
+    /* font-weight: bold; */
+}
+
+.btn-edit {
+    border-radius: 0;
+    background-color: rgba(5, 180, 89, 0.8);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+    /* font-weight: bold; */
+}
+
+.btn-edit:hover {
+    border: 2;
+    border-color: rgba(5, 180, 89, 0.8);
+    background-color: white; 
+    color: rgba(5, 180, 89, 0.8);
+    /* font-weight: bold; */
+}
+
+.btn-tambah {
+    border-radius: 0;
+    background-color: rgba(43, 23, 153, 0.8);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-tambah:hover {
+    border: 2;
+    border-color: rgba(43, 23, 153, 0.8);
+    background-color: white; 
+    color: rgba(43, 23, 153, 0.8);
+    /* font-weight: bold; */
+}
+
+.btn-cari {
+    border-radius: 0;
+    background-color: rgba(1, 85, 252, 0.866);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-cari:hover {
+    border: 2;
+    border-color: rgba(1, 85, 252, 0.866);
+    background-color: white; 
+    color: rgba(1, 85, 252, 0.866);
+    /* font-weight: bold; */
+}
+
+.btn-excel {
+    border-radius: 0;
+    background-color: rgba(1, 113, 20, 0.866);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-excel:hover {
+    border: 2;
+    border-color: rgba(1, 113, 20, 0.866);
+    background-color: white; 
+    color: rgba(1, 113, 20, 0.866);
+    /* font-weight: bold; */
+}
+
+.btn-cetak {
+    border-radius: 0;
+    background-color: rgba(254, 117, 5, 0.866);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animasi perubahan warna */
+}
+
+.btn-cetak:hover {
+    border: 2;
+    border-color: rgba(4, 97, 211, 0.866);
+    background-color: white; 
+    color: rgba(4, 97, 211, 0.866);
+    /* font-weight: bold; */
+}
+
+.btn-app {
+    border-radius: 3px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #6c757d;
+    font-size: 12px;
+    height: 60px;
+    margin: 0 0 10px 10px;
+    min-width: 80px;
+    padding: 15px 5px;
+    position: relative;
+    text-align: center;
+}
+
+.btn-app:hover {
+    border: 2;
+    border-color: rgba(4, 97, 211, 0.866);
+    background-color: rgb(194, 196, 190); 
+    color: rgba(4, 97, 211, 0.866);
+    /* font-weight: bold; */
+}
+
+.btn-app .badge-danger {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 50%;
+}
+
+/* ===== Card Title ===== */
+.card-title {
+    font-size: 22px;
+    font-weight: bold;
+    /* color: #333; */
+    margin-top: 5px;
+}
+
+/* Card Container */
+.card-menu {
+    border: 2px solid ; 
+    border-radius: 10px; 
+    background-color: #fff; /* Optional: Ensure a consistent background */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Icon Styling */
+.rounded-circle {
+    background-color: #ededfb; 
+    color: #fff; /* Icon color */
+}
+
+/* Hover Effect */
+.card-menu:hover {
+    transform: translateY(-5px); /* Add hover animation */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+    background-color: #ededfb; 
+}
+
+.card-color-list {
+    background-color: beige; 
+    color: black; /* Warna teks agar kontras */
+    border-radius: 8px; /* Tambahkan sudut melengkung */
+}
+  
+  
+
+/* ===== Spinner ===== */
+.spiner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Background semi-transparan */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    flex-direction: column;
+}
+
+.dots-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    /* Jarak antar titik */
+}
+
+.dots-loader span {
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    animation: dots-loader-animation 1.5s infinite;
+    opacity: 0.3;
+}
+
+.dots-loader span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dots-loader span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.dots-loader span:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes dots-loader-animation {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}

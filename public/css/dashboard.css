@@ -1,0 +1,124 @@
+.div1 {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    border: 1px solid #777777;
+}
+
+.div1 table {
+    border-spacing: 0;
+}
+
+.div1 th {
+    border-left: none;
+    /* border-right: 1px solid #bbbbbb; */
+    padding: 5px;
+    width: 80px;
+    min-width: 60px;
+    position: sticky;
+    top: 0;
+    background: #fffefe;
+    color: #090909;
+    font-weight: bold;
+    text-align: center;
+}
+
+.div1 td {
+    border-left: none;
+    /* border-right: 1px solid #bbbbbb; */
+    /* border-bottom: 1px solid #bbbbbb; */
+    padding: 5px;
+    width: 80px;
+    min-width: 60px;
+    background: white;
+    text-align: right;
+}
+
+.div1 th:nth-child(1),
+.div1 td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    width: 150px;
+    min-width: 150px;
+}
+
+.div1 th:nth-child(2),
+.div1 td:nth-child(2) {
+    position: sticky;
+    /* 1st cell left/right padding + 1st cell width + 1st cell left/right border width */
+    /* 0 + 5 + 150 + 5 + 1 */
+    left: 180px;
+    width: 50px;
+    min-width: 50px;
+}
+
+.div1 td:nth-child(1),
+.div1 td:nth-child(2) {
+    background: #f3efe3;
+}
+
+.div1 th:nth-child(1),
+.div1 th:nth-child(2) {
+    z-index: 2;
+}
+
+.marquee-item {
+    margin-right: 50px;
+    /* Adjust the value as needed */
+}
+
+.warna-biru {
+    color: blue;
+}
+
+.warna-hijau {
+    color: green;
+}
+
+.warna-merah {
+    color: red;
+}
+
+.warna-kuning {
+    color: rgb(137, 137, 5);
+}
+
+.warna-ungu {
+    color: purple;
+}
+
+.warna-orange {
+    color: orange;
+}
+
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
