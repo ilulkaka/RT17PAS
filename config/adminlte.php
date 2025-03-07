@@ -336,295 +336,307 @@ return [
         //     'key' => 'header1',
         //     'header' => '============='],
         [
-            'text' => 'PRODUKSI',
-            'icon' => 'fas fa-copy nav-icon',
-            'submenu' => [
-                [
-                    'text' => 'Point Perubahan',
-                    'url' => 'produksi/pointperubahan',
-                    'icon' => 'fas fa-bullhorn nav-icon',
-                ],
-                [
-                    'text' => 'Informasi Masalah',
-                    'url' => 'produksi/formmasalah',
-                    'icon' => 'far fa-keyboard nav-icon',
-                ],
-                [
-                    'text' => 'Report Produksi',
-                    'url' => 'produksi/report_produksi',
-                    'icon' => 'far fa-file-alt nav-icon',
-                    'active' => ['produksi/report_produksi*']
-                ],
-                [
-                    'text' => 'NG Report',
-                    'url' => 'produksi/ngreport',
-                    'icon' => 'fas fa-chart-pie nav-icon',
-                ],
-                [
-                    'text' => 'Report Lembur',
-                    'url' => 'produksi/report_lembur',
-                    'icon' => 'fas fa-clock nav-icon',
-                ],
-                [
-                    'text' => 'Request Jigu / Part',
-                    'url' => 'produksi/menu_request_jigu',
-                    'icon' => 'fas fa-drafting-compass nav-icon',
-                    'active' => ['produksi/menu_request_jigu*']
-                ],
-                [
-                    'text' => 'Request Perbaikan',
-                    'url' => 'produksi/list_permintaan_perbaikan',
-                    'icon' => 'fas fa-hammer nav-icon',
-                ],
-                [
-                    'text' => 'Foundry',
-                    'url' => 'produksi/frm_foundry',
-                    'icon' => 'far fa-snowflake nav-icon',
-                    'active' => ['produksi/frm_foundry*'],
-                    'badge' => 5,
-                    'badge_color' => 'warning',
-                ],
-            ],
-        ],
-        [
-            'text' => 'MAINTENANCE',
-            'icon' => 'fas fa-toolbox nav-icon',
-            'can' => ['role-admin','dept-maintenance'],
-            'submenu' => [
-                // [
-                //     'text' => 'Perbaikan',
-                //     'url' => 'maintenance/perbaikan',
-                //     'icon' => 'fas fa-hammer nav-icon',
-                // ],
-                [
-                    'text' => 'Schedule',
-                    'url' => 'maintenance/schedule',
-                    'icon' => 'far fa-calendar-alt nav-icon',
-                ],
-                [
-                    'text' => 'Laporan',
-                    'url' => 'maintenance/laporan',
-                    'icon' => 'fas fa-chart-line nav-icon',
-                ],
-                [
-                    'text' => 'Mesin',
-                    'url' => 'maintenance/mesin',
-                    'icon' => 'fas fa-cogs nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'TECHNICAL',
-            'icon' => 'fas fa-drafting-compass nav-icon',
-            'can' => ['role-admin','dept-tooling'],
-            'submenu' => [
-                [
-                    'text' => 'Jigu Control',
-                    // 'url' => 'undermaintenance',
-                    'icon' => 'fas fa-plus-square nav-icon',
-                ],
-                [
-                    'text' => 'Request',
-                    'url' => 'technical/menu_tch',
-                    'icon' => 'fas fa-plus-square nav-icon',
-                ],
-                [
-                    'text' => 'Update Denpyou',
-                    'url' => 'technical/update',
-                    'icon' => 'fas fa-clipboard-check nav-icon',
-                ],
-                [
-                    'text' => 'Master Tanegata',
-                    'url' => 'technical/list_master',
-                    'icon' => 'fa fa-asterisk nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'QA',
-            'icon' => 'fas fa-ruler-combined nav-icon',
-            'can' => ['role-admin','dept-qa'],
-            'submenu' => [
-                [
-                    'text' => 'QA Menu',
-                    'url' => 'qa/qamenu',
-                    'icon' => 'fas fa-plus-square nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'DELIVERY',
-            'icon' => 'fas fa-truck nav-icon',
-            'submenu' => [
-                [
-                    'text' => 'Work Result Entry',
-                    'url' => 'ppic/workresult',
-                    'icon' => 'fas fa-file-alt nav-icon',
-                    'can' => ['role-admin','dept-ppic'],
-                ],
-                [
-                    'text' => 'List Work Result',
-                    'url' => 'ppic/inqueryworkresult',
-                    'icon' => 'fas fa-list-ol nav-icon',
-                ],
-                [
-                    'text' => 'List Kantei',
-                    'url' => 'ppic/v_kantei',
-                    'icon' => 'far fa-list-alt nav-icon',
-                ],
-                [
-                    'text' => 'Estimasi',
-                    'url' => 'ppic/f_calculation',
-                    'icon' => 'fab fa-fedex nav-icon',
-                    'can' => ['role-admin','dept-ppic'],
-                ],
-                [
-                    'text' => 'Target',
-                    'url' => 'ppic/target',
-                    'icon' => 'fas fa-text-height nav-icon',
-                    'can' => ['role-admin','dept-ppic'],
-                ],
-                [
-                    'text' => 'Master PPIC',
-                    'url' => 'ppic/f_master',
-                    'icon' => 'far fa-circle nav-icon',
-                    'can' => ['role-admin','dept-ppic'],
-                ],
-                [
-                    'text' => 'Jam Kerusakan Mesin',
-                    'url' => 'ppic/jam_kerusakan',
-                    'icon' => 'fas fa-cogs nav-icon',
-                    'can' => ['role-admin','dept-ppic'],
-                ],
-            ],
-        ],
-        [
-            'text' => 'BARILI',
-            'url' => 'barili/frm_menu_barili',
+            'text' => 'Data Warga',
+            'url' => 'datas/list_warga',
             'icon' => 'fas fa-box-open nav-icon',
             'can' => ['role-admin','dept-ppic','dept-exim'],
         ],
         [
-            'text' => 'HSE',
-            'icon' => 'fab fa-envira nav-icon',
-            'can' => ['role-admin','dept-hse'],
+            'text' => 'Keuangan',
+            'icon' => 'fas fa-copy nav-icon',
             'submenu' => [
                 [
-                    'text' => 'HH / KY Entry',
-                    'url' => 'hse/f_hhky',
-                    'icon' => 'fas fa-h-square nav-icon',
+                    'text' => 'Iuran Warga',
+                    'url' => 'keuangan/frm_iuran_warga',
+                    'icon' => 'fas fa-bullhorn nav-icon',
                 ],
-                [
-                    'text' => 'HH / KY Inquery',
-                    'url' => 'hse/hklist',
-                    'icon' => 'fas fa-list nav-icon',
-                ],
-                [
-                    'text' => 'HH / KY Grafik',
-                    'url' => 'hse/hhkygrafik',
-                    'icon' => 'fas fa-chart-pie nav-icon',
-                ],
+                // [
+                //     'text' => 'Informasi Masalah',
+                //     'url' => 'produksi/formmasalah',
+                //     'icon' => 'far fa-keyboard nav-icon',
+                // ],
+                // [
+                //     'text' => 'Report Produksi',
+                //     'url' => 'produksi/report_produksi',
+                //     'icon' => 'far fa-file-alt nav-icon',
+                //     'active' => ['produksi/report_produksi*']
+                // ],
+                // [
+                //     'text' => 'NG Report',
+                //     'url' => 'produksi/ngreport',
+                //     'icon' => 'fas fa-chart-pie nav-icon',
+                // ],
+                // [
+                //     'text' => 'Report Lembur',
+                //     'url' => 'produksi/report_lembur',
+                //     'icon' => 'fas fa-clock nav-icon',
+                // ],
+                // [
+                //     'text' => 'Request Jigu / Part',
+                //     'url' => 'produksi/menu_request_jigu',
+                //     'icon' => 'fas fa-drafting-compass nav-icon',
+                //     'active' => ['produksi/menu_request_jigu*']
+                // ],
+                // [
+                //     'text' => 'Request Perbaikan',
+                //     'url' => 'produksi/list_permintaan_perbaikan',
+                //     'icon' => 'fas fa-hammer nav-icon',
+                // ],
+                // [
+                //     'text' => 'Foundry',
+                //     'url' => 'produksi/frm_foundry',
+                //     'icon' => 'far fa-snowflake nav-icon',
+                //     'active' => ['produksi/frm_foundry*'],
+                //     'badge' => 5,
+                //     'badge_color' => 'warning',
+                // ],
+            ],
+        ],
+        [
+            'text' => 'Data Pengurus',
+            'url' => 'barili/frm_menu_barili',
+            'icon' => 'fas fa-box-open nav-icon',
+            'can' => ['role-admin','dept-ppic','dept-exim'],
+        ],
+        // [
+        //     'text' => 'MAINTENANCE',
+        //     'icon' => 'fas fa-toolbox nav-icon',
+        //     'can' => ['role-admin','dept-maintenance'],
+        //     'submenu' => [
+        //         // [
+        //         //     'text' => 'Perbaikan',
+        //         //     'url' => 'maintenance/perbaikan',
+        //         //     'icon' => 'fas fa-hammer nav-icon',
+        //         // ],
+        //         [
+        //             'text' => 'Schedule',
+        //             'url' => 'maintenance/schedule',
+        //             'icon' => 'far fa-calendar-alt nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Laporan',
+        //             'url' => 'maintenance/laporan',
+        //             'icon' => 'fas fa-chart-line nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Mesin',
+        //             'url' => 'maintenance/mesin',
+        //             'icon' => 'fas fa-cogs nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'TECHNICAL',
+        //     'icon' => 'fas fa-drafting-compass nav-icon',
+        //     'can' => ['role-admin','dept-tooling'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Jigu Control',
+        //             // 'url' => 'undermaintenance',
+        //             'icon' => 'fas fa-plus-square nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Request',
+        //             'url' => 'technical/menu_tch',
+        //             'icon' => 'fas fa-plus-square nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Update Denpyou',
+        //             'url' => 'technical/update',
+        //             'icon' => 'fas fa-clipboard-check nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Master Tanegata',
+        //             'url' => 'technical/list_master',
+        //             'icon' => 'fa fa-asterisk nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'QA',
+        //     'icon' => 'fas fa-ruler-combined nav-icon',
+        //     'can' => ['role-admin','dept-qa'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'QA Menu',
+        //             'url' => 'qa/qamenu',
+        //             'icon' => 'fas fa-plus-square nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'DELIVERY',
+        //     'icon' => 'fas fa-truck nav-icon',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Work Result Entry',
+        //             'url' => 'ppic/workresult',
+        //             'icon' => 'fas fa-file-alt nav-icon',
+        //             'can' => ['role-admin','dept-ppic'],
+        //         ],
+        //         [
+        //             'text' => 'List Work Result',
+        //             'url' => 'ppic/inqueryworkresult',
+        //             'icon' => 'fas fa-list-ol nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'List Kantei',
+        //             'url' => 'ppic/v_kantei',
+        //             'icon' => 'far fa-list-alt nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Estimasi',
+        //             'url' => 'ppic/f_calculation',
+        //             'icon' => 'fab fa-fedex nav-icon',
+        //             'can' => ['role-admin','dept-ppic'],
+        //         ],
+        //         [
+        //             'text' => 'Target',
+        //             'url' => 'ppic/target',
+        //             'icon' => 'fas fa-text-height nav-icon',
+        //             'can' => ['role-admin','dept-ppic'],
+        //         ],
+        //         [
+        //             'text' => 'Master PPIC',
+        //             'url' => 'ppic/f_master',
+        //             'icon' => 'far fa-circle nav-icon',
+        //             'can' => ['role-admin','dept-ppic'],
+        //         ],
+        //         [
+        //             'text' => 'Jam Kerusakan Mesin',
+        //             'url' => 'ppic/jam_kerusakan',
+        //             'icon' => 'fas fa-cogs nav-icon',
+        //             'can' => ['role-admin','dept-ppic'],
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'BARILI',
+        //     'url' => 'barili/frm_menu_barili',
+        //     'icon' => 'fas fa-box-open nav-icon',
+        //     'can' => ['role-admin','dept-ppic','dept-exim'],
+        // ],
+        // [
+        //     'text' => 'HSE',
+        //     'icon' => 'fab fa-envira nav-icon',
+        //     'can' => ['role-admin','dept-hse'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'HH / KY Entry',
+        //             'url' => 'hse/f_hhky',
+        //             'icon' => 'fas fa-h-square nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'HH / KY Inquery',
+        //             'url' => 'hse/hklist',
+        //             'icon' => 'fas fa-list nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'HH / KY Grafik',
+        //             'url' => 'hse/hhkygrafik',
+        //             'icon' => 'fas fa-chart-pie nav-icon',
+        //         ],
                
-            ],
-        ],
-        [
-            'text' => 'ISO',
-            'icon' => 'fas fa-globe nav-icon',
-            'submenu' => [
-                [
-                    'text' => 'SS Entry',
-                    'url' => 'iso/ssentry',
-                    'icon' => 'fab fa-staylinked nav-icon',
-                    'can' => ['role-admin','dept-iso'],
-                ],
-                [
-                    'text' => 'SS Inquery',
-                    'url' => 'iso/sslist',
-                    'icon' => 'far fa-list-alt nav-icon',
-                    'can' => ['role-admin','dept-iso'],
-                ],
-                [
-                    'text' => 'SS Grafik',
-                    'url' => 'iso/ssgrafik',
-                    'icon' => 'fas fa-chart-pie nav-icon',
-                    'can' => ['role-admin','dept-iso'],
-                ],
-                [
-                    'text' => 'SS Nilai',
-                    'url' => 'iso/sspoint',
-                    'icon' => 'fas fa-list-ol nav-icon',
-                ],
-                [
-                    'text' => 'Document Control',
-                    'url' => 'iso/document_control',
-                    'icon' => 'far fa-file-alt nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'MANAGER',
-            'icon' => 'fas fa-user-tie nav-icon',
-            'can' => ['role-admin','dept-manager'],
-            'submenu' => [
-                [
-                    'text' => 'Target Lembur',
-                    'url' => 'manager/targetlembur',
-                    'icon' => 'fas fa-address-card nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'PGA',
-            'icon' => 'fas fa-edit nav-icon',
-            'submenu' => [
-                [
-                    'text' => 'Appraisal',
-                    'url' => 'pga/appraisal',
-                    'icon' => 'fas fa-check-circle nav-icon',
-                    'can' => ['role-admin','dept-manager','dept-pga'],
-                ],
-                [
-                    'text' => 'Bonus',
-                    'url' => 'pga/pgabonus',
-                    'icon' => 'fas fa-money-bill-wave nav-icon',
-                    'can' => ['role-admin','dept-manager','dept-pga'],
-                ],
-                [
-                    'text' => 'Doc GA',
-                    'url' => 'pga/frm_menu_pga',
-                    'icon' => 'fas fa-address-card nav-icon',
-                ],
-                [
-                    'text' => 'Setting',
-                    'url' => 'pga/frm_setting',
-                    'icon' => 'fas fa-cog nav-icon',
-                    'can' => ['role-admin','dept-manager','dept-pga'],
-                ],
-            ],
-        ],
-        [
-            'text' => 'DOCUMENT',
-            'icon' => 'fas fa-book nav-icon',
-            'submenu' => [
-                [
-                    'text' => 'My Document',
-                    'url' => 'document/inquery_document',
-                    'icon' => 'fa fa-file-contract nav-icon',
-                ],
-            ],
-        ],
-        [
-            'text' => 'WAREHOUSE',
-            'icon' => 'fas fa-warehouse nav-icon',
-            'can' => ['role-admin','dept-manager','dept-purchasing'],
-            'submenu' => [
-                [
-                    'text' => 'Timbangan',
-                    'url' => 'warehouse/timbangan',
-                    'icon' => 'fas fa-balance-scale nav-icon',
-                ],
-            ],
-        ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'ISO',
+        //     'icon' => 'fas fa-globe nav-icon',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'SS Entry',
+        //             'url' => 'iso/ssentry',
+        //             'icon' => 'fab fa-staylinked nav-icon',
+        //             'can' => ['role-admin','dept-iso'],
+        //         ],
+        //         [
+        //             'text' => 'SS Inquery',
+        //             'url' => 'iso/sslist',
+        //             'icon' => 'far fa-list-alt nav-icon',
+        //             'can' => ['role-admin','dept-iso'],
+        //         ],
+        //         [
+        //             'text' => 'SS Grafik',
+        //             'url' => 'iso/ssgrafik',
+        //             'icon' => 'fas fa-chart-pie nav-icon',
+        //             'can' => ['role-admin','dept-iso'],
+        //         ],
+        //         [
+        //             'text' => 'SS Nilai',
+        //             'url' => 'iso/sspoint',
+        //             'icon' => 'fas fa-list-ol nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Document Control',
+        //             'url' => 'iso/document_control',
+        //             'icon' => 'far fa-file-alt nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'MANAGER',
+        //     'icon' => 'fas fa-user-tie nav-icon',
+        //     'can' => ['role-admin','dept-manager'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Target Lembur',
+        //             'url' => 'manager/targetlembur',
+        //             'icon' => 'fas fa-address-card nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'PGA',
+        //     'icon' => 'fas fa-edit nav-icon',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Appraisal',
+        //             'url' => 'pga/appraisal',
+        //             'icon' => 'fas fa-check-circle nav-icon',
+        //             'can' => ['role-admin','dept-manager','dept-pga'],
+        //         ],
+        //         [
+        //             'text' => 'Bonus',
+        //             'url' => 'pga/pgabonus',
+        //             'icon' => 'fas fa-money-bill-wave nav-icon',
+        //             'can' => ['role-admin','dept-manager','dept-pga'],
+        //         ],
+        //         [
+        //             'text' => 'Doc GA',
+        //             'url' => 'pga/frm_menu_pga',
+        //             'icon' => 'fas fa-address-card nav-icon',
+        //         ],
+        //         [
+        //             'text' => 'Setting',
+        //             'url' => 'pga/frm_setting',
+        //             'icon' => 'fas fa-cog nav-icon',
+        //             'can' => ['role-admin','dept-manager','dept-pga'],
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'DOCUMENT',
+        //     'icon' => 'fas fa-book nav-icon',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'My Document',
+        //             'url' => 'document/inquery_document',
+        //             'icon' => 'fa fa-file-contract nav-icon',
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'WAREHOUSE',
+        //     'icon' => 'fas fa-warehouse nav-icon',
+        //     'can' => ['role-admin','dept-manager','dept-purchasing'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Timbangan',
+        //             'url' => 'warehouse/timbangan',
+        //             'icon' => 'fas fa-balance-scale nav-icon',
+        //         ],
+        //     ],
+        // ],
         [
             'text' => 'ADMIN',
             'icon' => 'fas fa-user nav-icon',
@@ -662,16 +674,16 @@ return [
                 ],
             ],
         ],
-        [
-            'text' => 'CALENDAR',
-            'url' => 'calendar',
-            'icon' => 'far fa-calendar-alt nav-icon',
-        ],
-        [
-            'text' => 'HELP DESK',
-            'url' => 'help_desk',
-            'icon' => 'far fa-question-circle nav-icon',
-        ],
+        // [
+        //     'text' => 'CALENDAR',
+        //     'url' => 'calendar',
+        //     'icon' => 'far fa-calendar-alt nav-icon',
+        // ],
+        // [
+        //     'text' => 'HELP DESK',
+        //     'url' => 'help_desk',
+        //     'icon' => 'far fa-question-circle nav-icon',
+        // ],
 /*        
         [
             'text' => 'change_password',

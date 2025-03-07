@@ -13,6 +13,8 @@ use App\Http\Controllers\api\MeasurementController;
 use App\Http\Controllers\api\FoundryController;
 use App\Http\Controllers\api\NotifController;
 
+use App\Http\Controllers\api\DatasController;
+
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
@@ -179,4 +181,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
     //================ NOTIF ==================================
     Route::get('foundry/notif_permintaan_sleeve',[NotifController::class,'notifPermintaanSleeve']);
     
+});
+
+Route::middleware(['auth:sanctum','ability:admin,del_data_komposisi'])->group(function(){
+    Route::post('datas/ins_warga',[DatasController::class,'insWarga']);
+    Route::get('datas/list_warga',[DatasController::class,'listWarga']);
 });

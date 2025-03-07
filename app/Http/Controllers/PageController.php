@@ -139,5 +139,15 @@ class PageController extends Controller
     }
 //====================iso======================
 
+
+
+    public function frmIuranWarga(){
+        return view('keuangan.frm_iuran_warga');
+    }
+
+    public function listWarga(){
+        return view('datas.list_warga');
+    }
+
  
 }
