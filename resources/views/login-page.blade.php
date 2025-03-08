@@ -31,7 +31,7 @@
             <div class="text-center mb-4">
                 <img src="{{ asset('/assets/img/NPMI_Logo.png') }}" style="height: 150px; width: 150px;"
                     class="img-circle">
-                <h3>PT. NPR Manufacturing Indonesia</h3>
+                <h3>Perum Pasuruan Anggun Sejahtera</h3>
                 <h3 class="panel-title" style="padding-top:10px;padding-bottom:10px;"><b>Login</b></h3>
             </div>
             <hr>
