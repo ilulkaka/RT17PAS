@@ -20,6 +20,7 @@ class SecureHeaders
         $response = $next($request);
 
         $response->headers->set('Permissions-Policy', 'geolocation=(), microphone=(), camera=(), autoplay=(), fullscreen=()');
+        $response->headers->set('Referrer-Policy', 'no-referrer-when-downgrade');
 
         return $response;
     }
