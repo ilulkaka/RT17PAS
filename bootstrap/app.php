@@ -21,7 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'checkability' => CheckAbility::class,
         ]);
         //$middleware->append(CheckAbility::class);
+        $middleware->append(App\Http\Middleware\SecureHeaders::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+    
