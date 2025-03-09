@@ -13,7 +13,8 @@ $(document).ready(function() {
     });
 
     $("#btn_tambah").on("click", function() {
-        $("#modal_tw").modal('show');
+        var myModal = new bootstrap.Modal(document.getElementById('modal_tw'));
+        myModal.show();
     });
 
     getListWarga();

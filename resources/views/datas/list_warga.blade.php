@@ -8,7 +8,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-tambah" id="btn_tambah" name="btn_tambah"><i class="fas fa-user-plus"></i><u>
+            <button type="button" class="btn btn-tambah" id="btn_tambah" name="btn_tambah" data-bs-toggle="modal"
+                data-bs-target="#modal_tw"><i class="fas fa-user-plus"></i><u>
                     Tambah</u></button>
             <div class="card">
                 <div class="card-header card-color-list">
