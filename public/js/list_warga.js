@@ -4,6 +4,18 @@ $(document).ready(function() {
         theme: 'bootstrap-5'
     });
 
+    document.getElementById('blok').addEventListener('input', function (e) {
+        let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        if (value.length > 2) {
+            value = value.slice(0, 3) + '/' + value.slice(3);
+        }
+        e.target.value = value;
+    });
+
+    $("#btn_tambah").on("click", function() {
+        $("#modal_tw").modal('show');
+    });
+
     getListWarga();
 
     $("#btn_reload").on("click", function() {

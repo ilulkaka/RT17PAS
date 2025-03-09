@@ -15,7 +15,7 @@ return [
     */
 
     'title' => 'Dashboard',
-    'title_prefix' => 'NPMI',
+    'title_prefix' => 'RT 17 PAS',
     'title_postfix' => '',
 
     /*
@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>NPMI</b>',
-    'logo_img' => 'assets/img/NPMI_Logo.png',
+    'logo' => '<span style="text-decoration: none; display: inline-block;"><b>RT 17 PAS</b></span>',
+    'logo_img' => 'assets/img/RT17_Logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -113,7 +113,7 @@ return [
         'enabled' => true,
         'mode' => 'fullscreen',
         'img' => [
-            'path' => 'assets/img/NPMI_Logo.png',
+            'path' => 'assets/img/RT17_Logo.png',
             'alt' => 'AdminLTE Preloader Image',
             'effect' => 'animation__shake',
             'width' => 60,
@@ -347,7 +347,8 @@ return [
             'submenu' => [
                 [
                     'text' => 'Iuran Warga',
-                    'url' => 'keuangan/frm_iuran_warga',
+                    // 'url' => 'keuangan/frm_iuran_warga',
+                    'url' => 'undermaintenance',
                     'icon' => 'fas fa-bullhorn nav-icon',
                 ],
                 // [
@@ -394,7 +395,7 @@ return [
         ],
         [
             'text' => 'Data Pengurus',
-            'url' => 'barili/frm_menu_barili',
+            'url' => 'undermaintenance',
             'icon' => 'fas fa-box-open nav-icon',
             'can' => ['role-admin','dept-ppic','dept-exim'],
         ],

@@ -23,9 +23,6 @@ class PageController extends Controller
         return view('userPage.userprofil');
     }
 
-    public function undermaintenance(){
-        return view('undermaintenance');
-    }
 
 //===================produksi==================
 
@@ -140,6 +137,10 @@ class PageController extends Controller
 //====================iso======================
 
 
+    public function underMaintenance ()
+    {
+        return view ('undermaintenance');
+    }
 
     public function frmIuranWarga(){
         return view('keuangan.frm_iuran_warga');

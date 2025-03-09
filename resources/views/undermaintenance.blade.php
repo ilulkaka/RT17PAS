@@ -22,7 +22,7 @@
                             Sorry for the inconvenience but we’re performing some maintenance at the moment.
                             we’ll be back online shortly!</p>
                         <p>
-                            IT Department</p>
+                            Administrator.</p>
                     </div>
                     {{-- <div class="error-actions">
                         <button class="btn-lg btn-danger" style="color:white; font-size: large;" id="btn_back"><u><b><i

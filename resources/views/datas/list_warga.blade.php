@@ -7,68 +7,8 @@
 @section('content_body')
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="card card-success card-outline">
-                <div class="card-header">
-                    <h5 class="card-title" id="exampleModalLongTitle"><b> Form Entry Data Warga</b> </h5>
-                </div>
-                <form id="frm_fedw">
-                    @csrf
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <strong for="nama">Nama Warga</strong>
-                                <input type="text" class="form-control @error('nama')is-invalid @enderror" name="nama"
-                                    id="nama" placeholder="Nama Warga" required>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <strong for="nama">Blok</strong>
-                                <input type="text" class="form-control @error('nama')is-invalid @enderror" name="blok"
-                                    id="blok" placeholder="Blok Rumah" required>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <strong for="sel">Jenis Kelamin</strong>
-                                <select name="jk" id="jk"
-                                    class="form-control select2 @error('nik') is-invalid @enderror rounded-0"
-                                    style="width: 100%;" required>
-                                    <option value="">Pilih...</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <strong for="sel">Status Tinggal</strong>
-                                <select name="status_tinggal" id="status_tinggal"
-                                    class="form-control select2 @error('nik') is-invalid @enderror rounded-0"
-                                    style="width: 100%;" required>
-                                    <option value="">Pilih...</option>
-                                    <option value="Stay">Stay</option>
-                                    <option value="Kontrak">Kontrak</option>
-                                    <option value="Kos">Kos</option>
-                                    <option value="Singgah">Singgah</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <strong>No Telp</strong>
-                                <input type="text" class="form-control" name="no_telp" id="no_telp"
-                                    placeholder="No Telp">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="card-footer">
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="form-control btn-update rounded-0" id="btn_submit"
-                                    name="btn_submit"><b>Update</b></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <a href="#" id="btn_tambah" name="btn_tambah">Tambah</a>
             <div class="card">
                 <div class="card-header card-color-list">
                     <div class="row">
@@ -126,6 +66,69 @@
                 {{-- <div class="card-footer" style="margin-top:-1%">
             <button class="btn btn-excel" id="btn-excel"><i class="fas fa-file-excel"> Download Excel</i></button>
         </div> --}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Warga (TW) -->
+    <div class="modal fade" id="modal_tw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Form Entry Data Warga</h4>
+                </div>
+                <form id="frm_fedw">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <strong for="nama">Nama Warga</strong>
+                                <input type="text" class="form-control @error('nama')is-invalid @enderror" name="nama"
+                                    id="nama" placeholder="Nama Warga" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <strong for="nama">Blok</strong>
+                                <input type="text" class="form-control" name="blok" id="blok"
+                                    placeholder="Blok Rumah" maxlength="6" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <strong for="sel">Jenis Kelamin</strong>
+                                <select name="jk" id="jk"
+                                    class="form-control select2 @error('nik') is-invalid @enderror rounded-0"
+                                    style="width: 100%;" required>
+                                    <option value="">Pilih...</option>
+                                    <option value="L">Laki-laki</option>
+                                    <option value="P">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <strong for="sel">Status Tinggal</strong>
+                                <select name="status_tinggal" id="status_tinggal"
+                                    class="form-control select2 @error('nik') is-invalid @enderror rounded-0"
+                                    style="width: 100%;" required>
+                                    <option value="">Pilih...</option>
+                                    <option value="Stay">Stay</option>
+                                    <option value="Kontrak">Kontrak</option>
+                                    <option value="Kos">Kos</option>
+                                    <option value="Singgah">Singgah</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <strong>No Telp</strong>
+                                <input type="text" class="form-control" name="no_telp" id="no_telp"
+                                    placeholder="No Telp">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-keluar btn-flat col-md-3"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-update btn-flat col-md-3" id="btn_submit">Save</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>

@@ -16,12 +16,12 @@
                 <div class="inner">
                     <h3 id="hasil_produksi"></h3>
 
-                    <p>Produksi</p>
+                    <p>Saldo</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-bar"></i>
                 </div>
-                <a href="{{ url('produksi/report') }}" class="small-box-footer">More info <i
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -32,12 +32,12 @@
                 <div class="inner">
                     <h3 id="hasil_sales"></h3>
 
-                    <p>Sales</p>
+                    <p>Pemasukan bulan ini</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-luggage-cart"></i>
                 </div>
-                <a href="{{ url('produksi/report') }}" class="small-box-footer">More info <i
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -49,12 +49,12 @@
                     <!-- <h3>Detail</h3> -->
                     <h3 id="success-rate"></h3>
 
-                    <p>Success Rate</p>
+                    <p>Pengeluaran bulan ini</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-percent"></i>
                 </div>
-                <a href="{{ url('produksi/NGreport') }}" class="small-box-footer">More info <i
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -65,12 +65,12 @@
                 <div class="inner">
                     <h3 id="total_jam_lembur"></h3>
 
-                    <p>Total Jam Lembur</p>
+                    <p>Total Warga</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-clock"></i>
                 </div>
-                <a href="{{ url('produksi/lembur') }}" class="small-box-footer">More info <i
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -79,11 +79,11 @@
     <div class="col-md-12" style="margin-top: -15px">
         <marquee id="marqueeExpres" behavior="scroll" direction="left">
             <b>
-                Loading...
+                RT 17 PAS
             </b>
         </marquee>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="card card-info">
 
@@ -101,10 +101,6 @@
                             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:18px"><u>
                                 Grafik </u>
                         </button>
-                        {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                                class="fas fa-times"></i></button> --}}
                     </div>
                 </div>
 
@@ -141,7 +137,7 @@
                     </div>
                 </div>
 
-                {{-- collapse 2 --}}
+                <!-- collapse 2 -->
                 <div id="collapseHasilProduksi" class="panel-collapse in collapse" style="">
                     <div class="card-body">
                         <div class="col-md-12">
@@ -149,7 +145,6 @@
                                 <div class="row">
                                     <input type="hidden" class="form-control col-md-2" id="tgl1"
                                         value="{{ date('Y-m') . '-01' }}">
-                                    {{-- <label for="" class="col-md-1 text-center">Sampai</label> --}}
                                     <input type="hidden" class="form-control col-md-2" id="tgl2"
                                         value="{{ date('Y-m-d') }}">
                                     <div class="col col-md-1 text-center"><label> Line</label></div>
@@ -161,8 +156,6 @@
 
                                         </select>
                                     </div>
-                                    {{-- <button class="btn btn-primary flat" id="btn_refreshHasil"><i
-                                            class="fa fa-sync"></i></button> --}}
                                 </div>
                             </div>
                         </div>
@@ -324,26 +317,7 @@
                             <p class="text-center">
                                 <strong>SS Goal Completion {{ date('Y') }}</strong>
                             </p>
-                            {{--
-                        @foreach ($pross as $p)
-                            <a href="#" style="color: red" class="progress-link"
-                                data-progress="{{ $p->dept_group }}"
-                                value="{{ $p->dept_group }}">{{ $p->dept_group }} - <b>{{ $p->jml }}</b>
-                                <input type="hidden" class="progress-bar bg-success" value="{{ $p->prosentase }}"
-                                    style="width: 100%">
-                            </a>
-                            @if (Session::get('dept') == 'SEKRETARIAT ISO' || Session::get('level') == 'Admin')
-                                <span class="float-right"><b>{{ $p->jml_ss }}</b>/{{ $p->jml * 1 }}</span>
-                            @endif
-                            <div class="progress-group">
-                                <div class="progress progress-lg">
-                                    <div class="progress-bar bg-primary" style="width: {{ $p->prosentase }}%">
-                                        {{ $p->prosentase }} %</div>
-                                </div>
-                            </div>
-                        @endforeach
-                        --}}
-                            <!-- /.progress-group -->
+                                                       <!-- /.progress-group -->
                             <!-- /.progress-group -->
                         </div>
 
@@ -394,17 +368,7 @@
                         <tbody>
                             <!-- Data akan ditambahkan di sini oleh JavaScript -->
                         </tbody>
-                        {{-- <tbody>
-                        @foreach ($mesinoff as $mesin)
-                            <tr>
-                                <td>{{ $mesinstop->no_induk_mesin }}</td>
-                                <td>{{ $mesinstop->nama_mesin }}</td>
-                                <td>{{ $mesinstop->no_urut_mesin }}</td>
-                                <td>{{ $mesinstop->tanggal_rusak }}</td>
-                                <td>{{ $mesinstop->masalah }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody> --}}
+
                     </table>
                 </div>
 
@@ -585,7 +549,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @stop
 
 {{-- Push extra CSS --}}

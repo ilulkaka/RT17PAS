@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PT. NPR Manufacturing Indonesia</title>
+    <title>RT 17 PAS</title>
 
     <!-- Core CSS - Include with every page -->
     <link href="{{ asset('/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,8 +24,7 @@
     <div
         style="background-image: url('{{ asset('/assets/img/background-login.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;">
         <!-- Optional content centered within the full-screen background -->
-        <div
-            style="text-align: center; background-color: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 10px; border: 2px solid rgba(83, 83, 128, 0.719);">
+        <div style="text-align: center; background-color: rgba(255, 255, 255, 0.8); padding: 20px; ">
 
 
             <div class="text-center mb-4">
@@ -49,18 +48,16 @@
                         <fieldset>
 
                             <div class="form-group row">
-                                <div class="col col-md-3"><label>NIK</label></div>
-                                <label class="col col-md-1">:</label>
-                                <div class="col-md-8">
+                                <strong style="text-align:left">NIK</strong>
+                                <div class="col-md-12">
                                     <input class="form-control @error('username') is-invalid @enderror rounded-0"
                                         placeholder="NIK" name="nik" type="text" id="nik"
                                         value="{{ old('username') }}" autofocus required>
                                 </div>
                             </div>
                             <div class="form-group row" style="margin-top: 3%">
-                                <div class="col col-md-3"><label>Password</label></div>
-                                <label class="col col-md-1">:</label>
-                                <div class="col-md-8">
+                                <strong style="text-align:left">Password</strong>
+                                <div class="col-md-12">
                                     <input class="form-control @error('password') is-invalid @enderror rounded-0"
                                         placeholder="Password" name="password" type="password" id="pass"
                                         value="{{ old('password') }}" required>

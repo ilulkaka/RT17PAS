@@ -15,7 +15,7 @@ Route::get('/sesion', [Usercontroller::class,'sesion']);
 //Route::get('/', [PageController::class,'home'])->middleware('auth:sanctum')->name('home');
 
 Route::middleware(['auth:sanctum'])->group(function(){
-    Route::get('/undermaintenance', [PageController::class,'undermaintenance']);
+    Route::get('/undermaintenance', [PageController::class,'underMaintenance']);
     Route::get('/', [PageController::class,'home'])->name('home');
     Route::get('/profile', [PageController::class,'profile']);
     Route::get('produksi/ngreport', [PageController::class,'ngreport']);
@@ -70,3 +70,4 @@ Route::middleware(['auth:sanctum','ability:admin,only_maintenance'])->group(func
     Route::get('keuangan/frm_iuran_warga', [PageController::class,'frmIuranWarga']);
     Route::get('datas/list_warga', [PageController::class,'listWarga']);
 });
+

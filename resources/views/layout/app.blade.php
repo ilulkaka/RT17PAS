@@ -49,8 +49,7 @@
         Version: {{ config('app.version', '2.0.0') }}
     </div>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <strong>Copyright © 2025-{{ date('Y') }} <a href="#">PT. NPR Manufacturing
-            Indonesia.</a></strong>
+    <strong>Copyright © 2025-{{ date('Y') }} <a href="#">Perum Pasuruan Anggun Sejahtera RT 17.</a></strong>
 @stop
 
 @section('css')
