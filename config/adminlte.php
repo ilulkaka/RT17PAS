@@ -873,7 +873,8 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => 'https://cdn.datatables.net/2.2.2/css/dataTables.css',
+                    // 'location' => 'https://cdn.datatables.net/2.2.2/css/dataTables.css',
+                    'location' => 'https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css',
                 ],
                 [
                     'type' => 'css',

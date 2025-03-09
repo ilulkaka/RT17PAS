@@ -1,9 +1,9 @@
-@section('plugins.Select2', true)
 @extends('layout.app')
+@section('plugins.Select2', true)
 
 {{-- Customize layout sections --}}
 
-@section('content_header_title', 'Report Produksi')
+@section('content_header_title', 'List Warga')
 @section('content_body')
 
     <div class="row">
