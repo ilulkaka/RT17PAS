@@ -230,7 +230,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-keluar btn-flat col-md-3" id="e_btn_close">Close</button>
+                        <button type="button" class="btn btn-keluar" data-bs-dismiss="modal" aria-label="Close">Close
+                        </button>
                         <button type="submit" class="btn btn-update btn-flat col-md-3" id="e_btn_submit">Save</button>
                     </div>
 

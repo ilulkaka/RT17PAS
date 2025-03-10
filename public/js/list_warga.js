@@ -94,6 +94,13 @@ $(document).ready(function() {
             })
     });
 
+    $("#tb_list_warga").on('click', '.delWarga', function(e) {
+        e.preventDefault();
+        var datas = listWarga.row($(this).parents('tr')).data();
+
+        infoFireAlert("info", "Under Development");
+    });
+
 });
 
 

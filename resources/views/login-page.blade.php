@@ -24,11 +24,11 @@
     <div
         style="background-image: url('{{ asset('/assets/img/background-login.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;">
         <!-- Optional content centered within the full-screen background -->
-        <div style="text-align: center; background-color: rgba(255, 255, 255, 0.8); padding: 20px; ">
+        <div style="text-align: center; background-color: rgba(255, 255, 255, 0.5); padding: 20px; ">
 
 
             <div class="text-center mb-4">
-                <img src="{{ asset('/assets/img/NPMI_Logo.png') }}" style="height: 150px; width: 150px;"
+                <img src="{{ asset('/assets/img/RT17_Logo.png') }}" style="height: 150px; width: 150px;"
                     class="img-circle">
                 <h3>Perum Pasuruan Anggun Sejahtera</h3>
                 <h3 class="panel-title" style="padding-top:10px;padding-bottom:10px;"><b>Login</b></h3>
