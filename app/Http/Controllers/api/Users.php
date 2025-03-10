@@ -79,7 +79,7 @@ class Users extends Controller
         $create = User::create([
             "name"=> $request->nama,
             "email" => $request->email,
-            "nik" => $request->nik,
+            "nik" => date('His'),
             "password" => Hash::make($request->password),
             "setatus" => $status,
         ]);

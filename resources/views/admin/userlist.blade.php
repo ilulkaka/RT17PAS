@@ -53,25 +53,25 @@
                 <div class="modal-body">
                     <form action="" id="frm-user">
                         <input type="hidden" name="id_user" id="id_user">
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">NIK</label>
                             <div class="col-sm-10">
                                 <input type="text" name="nik" class="form-control" id="nikuser"
                                     placeholder="NIK User" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
                                 <input type="text" name="nama" class="form-control" id="inputuser"
-                                    placeholder="Nama User" required readonly>
+                                    placeholder="Nama User" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
                                 <input type="text" name="email" class="form-control" id="emailuser"
-                                    placeholder="Email User" required readonly>
+                                    placeholder="Email User" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -106,8 +106,8 @@
                         </div>
                         <div class="form-group row">
                             <select name="role[]" id="role" multiple="multiple"
-                                class="select2 select2-hidden-accessible" data-placeholder="Pilih Role"
-                                style="width: 100%;" data-select2-id="7" tabindex="-1" aria-hidden="true" required>
+                                class="select2 select2-hidden-accessible" data-placeholder="Pilih Role" style="width: 100%;"
+                                data-select2-id="7" tabindex="-1" aria-hidden="true" required>
 
                             </select>
 

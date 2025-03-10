@@ -183,7 +183,11 @@ Route::middleware(['auth:sanctum'])->group(function(){
     
 });
 
-Route::middleware(['auth:sanctum','ability:admin,del_data_komposisi'])->group(function(){
-    Route::post('datas/ins_warga',[DatasController::class,'insWarga']);
+Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('datas/list_warga',[DatasController::class,'listWarga']);
+});
+
+Route::middleware(['auth:sanctum','ability:admin,ins_data_warga'])->group(function(){
+    Route::post('datas/ins_warga',[DatasController::class,'insWarga']);
+    Route::patch('datas/edt_warga',[DatasController::class,'edtWarga']);
 });

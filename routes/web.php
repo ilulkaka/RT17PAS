@@ -66,7 +66,7 @@ Route::middleware(['checkability:admin'])->group(function(){
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum','ability:admin,only_maintenance'])->group(function(){
+Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('keuangan/frm_iuran_warga', [PageController::class,'frmIuranWarga']);
     Route::get('datas/list_warga', [PageController::class,'listWarga']);
 });

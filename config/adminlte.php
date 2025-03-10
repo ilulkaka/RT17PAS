@@ -326,24 +326,22 @@ return [
         //     'label' => 4,
         //     'label_color' => 'success',
         // ],
-         [
+        [
             'key' =>'dashboard',
             'text' => 'DASHBOARD',
             'url' => '/',
             'icon' => 'fas fa-th nav-icon',
         ],
-        // [
-        //     'key' => 'header1',
-        //     'header' => '============='],
         [
             'text' => 'Data Warga',
             'url' => 'datas/list_warga',
             'icon' => 'fas fa-box-open nav-icon',
-            'can' => ['role-admin','dept-ppic','dept-exim'],
+            'can' => ['role-admin','sect-pengurus'],
         ],
         [
             'text' => 'Keuangan',
             'icon' => 'fas fa-copy nav-icon',
+            'can' => ['role-admin','sect-pengurus'],
             'submenu' => [
                 [
                     'text' => 'Iuran Warga',
@@ -351,53 +349,13 @@ return [
                     'url' => 'undermaintenance',
                     'icon' => 'fas fa-bullhorn nav-icon',
                 ],
-                // [
-                //     'text' => 'Informasi Masalah',
-                //     'url' => 'produksi/formmasalah',
-                //     'icon' => 'far fa-keyboard nav-icon',
-                // ],
-                // [
-                //     'text' => 'Report Produksi',
-                //     'url' => 'produksi/report_produksi',
-                //     'icon' => 'far fa-file-alt nav-icon',
-                //     'active' => ['produksi/report_produksi*']
-                // ],
-                // [
-                //     'text' => 'NG Report',
-                //     'url' => 'produksi/ngreport',
-                //     'icon' => 'fas fa-chart-pie nav-icon',
-                // ],
-                // [
-                //     'text' => 'Report Lembur',
-                //     'url' => 'produksi/report_lembur',
-                //     'icon' => 'fas fa-clock nav-icon',
-                // ],
-                // [
-                //     'text' => 'Request Jigu / Part',
-                //     'url' => 'produksi/menu_request_jigu',
-                //     'icon' => 'fas fa-drafting-compass nav-icon',
-                //     'active' => ['produksi/menu_request_jigu*']
-                // ],
-                // [
-                //     'text' => 'Request Perbaikan',
-                //     'url' => 'produksi/list_permintaan_perbaikan',
-                //     'icon' => 'fas fa-hammer nav-icon',
-                // ],
-                // [
-                //     'text' => 'Foundry',
-                //     'url' => 'produksi/frm_foundry',
-                //     'icon' => 'far fa-snowflake nav-icon',
-                //     'active' => ['produksi/frm_foundry*'],
-                //     'badge' => 5,
-                //     'badge_color' => 'warning',
-                // ],
             ],
         ],
         [
             'text' => 'Data Pengurus',
             'url' => 'undermaintenance',
             'icon' => 'fas fa-box-open nav-icon',
-            'can' => ['role-admin','dept-ppic','dept-exim'],
+            'can' => ['role-admin','sect-pengurus'],
         ],
         // [
         //     'text' => 'MAINTENANCE',
@@ -843,7 +801,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => 'https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.js',
+                    'location' => 'https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap5.min.js',
                 ],
                 [
                     'type' => 'js',
@@ -873,14 +831,15 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => 'https://cdn.datatables.net/2.2.2/css/dataTables.css',
-                    // 'location' => 'https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css',
+                    'location' => 'https://cdn.datatables.net/responsive/3.0.4/css/responsive.bootstrap5.css',
+                    // 'location' => 'https://cdn.datatables.net/select/2.0.2/css/select.dataTables.css',
                 ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => 'https://cdn.datatables.net/select/2.0.2/css/select.dataTables.css',
-                ],
+                // [
+                //     'type' => 'css',
+                //     'asset' => false,
+                //     'location' => 'https://cdn.datatables.net/2.2.2/css/dataTables.css',
+                //     // 'location' => 'https://cdn.datatables.net/2.2.2/css/dataTables.css',
+                // ],
             ],
         ],
         'Select2' => [

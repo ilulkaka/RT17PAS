@@ -15,11 +15,15 @@ class DatasController extends Controller
         // dd($request->all());
         $insWarga = WargaModel::create([
             'id_warga' => str::uuid(),
+            'no_kk' => $request->no_kk,
+            'no_ktp' => $request->no_ktp,
             'nama' => $request->nama,
+            'alamat_ktp' => $request->alamat,
             'blok' => $request->blok,
             'jenis_kelamin' => $request->jk,
             'status_tinggal' => $request->status_tinggal,
             'no_telp' => $request->no_telp,
+            'keterangan' => $request->keterangan,
         ]);
 
         if ($insWarga) {
@@ -46,10 +50,22 @@ class DatasController extends Controller
 
         $tgl_awal = $request->tgl_awal;
         $tgl_akhir = $request->tgl_akhir;
+        $status_tinggal = $request->status_tinggal;
 
-        $datas = WargaModel::where(function ($q) use ($search) {
+        $liststatus = [];
+
+        if ($status_tinggal == 'All') {
+            $liststatus = ['Stay', 'Kontrak', 'Kos', 'Singgah'];
+        } else {
+            $liststatus = [$status_tinggal];
+        }
+
+        $datas = WargaModel::whereIn('status_tinggal',$liststatus)
+        ->where(function ($q) use ($search) {
                 $q
                     ->where('nama', 'like', '%' . $search . '%')
+                    ->orwhere('no_kk', 'like', '%' . $search . '%')
+                    ->orwhere('no_ktp', 'like', '%' . $search . '%')
                     ->orwhere('blok', 'like', '%' . $search . '%')
                     ->orwhere('status_tinggal', 'like', '%' . $search . '%');
             })
@@ -58,9 +74,12 @@ class DatasController extends Controller
             ->take($length)
             ->get();
 
-        $count = WargaModel::where(function ($q) use ($search) {
+        $count = WargaModel::whereIn('status_tinggal',$liststatus)
+        ->where(function ($q) use ($search) {
             $q
                 ->where('nama', 'like', '%' . $search . '%')
+                ->orwhere('no_kk', 'like', '%' . $search . '%')
+                ->orwhere('no_ktp', 'like', '%' . $search . '%')
                 ->orwhere('blok', 'like', '%' . $search . '%')
                 ->orwhere('status_tinggal', 'like', '%' . $search . '%');
         })
@@ -72,5 +91,35 @@ class DatasController extends Controller
             'recordsFiltered' => $count,
             'data' => $datas,
         ];
+    }
+
+    public function edtWarga (Request $request)
+    {
+        $edtWarga = WargaModel::where('id_warga', $request->e_id_warga)
+            ->update([
+                'no_kk' => $request->e_no_kk,
+                'no_ktp' => $request->e_no_ktp,
+                'nama' => $request->e_nama,
+                'alamat_ktp' => $request->e_alamat,
+                'blok' => $request->e_blok,
+                'jenis_kelamin' => $request->e_jk,
+                'status_tinggal' => $request->e_status_tinggal,
+                'no_telp' => $request->e_no_telp,
+                'keterangan' => $request->e_keterangan,
+            ]);
+
+        if ($edtWarga) {
+            return
+            [
+                'success' => true,
+                'message' => 'Data berhasil diubah',
+            ];
+        } else {
+            return
+            [
+                'success' => false,
+                'message' => 'Data gagal diubah',
+            ];
+        }
     }
 }
