@@ -5,11 +5,11 @@ $(document).ready(function(){
     });
 
     get_dataDashboard(key);
-    get_success(null,null,key);
+    // get_success(null,null,key);
     //get_laporproduksi(key);
-    allLine(key);
+    // allLine(key);
     
-    get_info_update(key);
+    // get_info_update(key);
     $("#collapsePencapaianTarget").collapse("show");
     $("#col1").click(function() {
         if ($("#collapsePencapaianTarget").hasClass("show")) {
@@ -154,81 +154,12 @@ function get_dataDashboard(key){
         // =========== Hasil Produksi, Sales dan Lembur ==========
         success: function(resp) {
             let wargaTerdaftar = parseFloat(resp.wargaTerdaftar);
-            let hasilSales = parseFloat(resp.salespcs);
-            let totalJamLembur = parseFloat(resp.lembur);
 
             if (isNaN(wargaTerdaftar)) {
                 wargaTerdaftar = 0;
             }
 
             $("#warga_terdaftar").html(wargaTerdaftar.toLocaleString() + ' Warga');
-
-            // ================= Marque express =======================================
-
-            let marqueeContent = '';
-
-            if (resp.marqueexpres && resp.marqueexpres.length > 0) {
-                $.each(resp.marqueexpres, function(index, item) {
-                    let colorClass = '';
-                    switch (item.warna_tag.toLowerCase()) {
-                        case 'biru':
-                            colorClass = 'warna-biru';
-                            break;
-                        case 'hijau':
-                            colorClass = 'warna-hijau';
-                            break;
-                        case 'merah':
-                            colorClass = 'warna-merah';
-                            break;
-                        case 'orange':
-                            colorClass = 'warna-orange';
-                            break;
-                        case 'ungu':
-                            colorClass = 'warna-ungu';
-                            break;
-                        case 'kuning':
-                            colorClass = 'warna-kuning';
-                            break;
-                    }
-
-                    marqueeContent += `<span class="marquee-item ${colorClass}">
-                ${item.tag} ${item.warna_tag} ,<span style="color:black"> Target Finish ${item.finish} : <span style="color:red">${item.tot}</span> Lot
-            </span></span>`;
-                });
-            } else {
-                marqueeContent = '<span class="marquee-item">Loading...</span>';
-            }
-
-            // Menambahkan konten ke elemen marquee
-            $('#marqueeExpres').html(`<b>${marqueeContent}</b>`);
-
-            // ================= Mesin Stop =======================================
-            if (resp.success) {
-                var tbody = $('#tb_mesinoff tbody');
-                tbody.empty();
-
-                var mesinstop = resp.mesinstop;
-
-                if (mesinstop.length > 0) {
-
-                    $.each(mesinstop, function(index, item) {
-                        var row = '<tr>' +
-                            '<td>' + item.no_induk_mesin + '</td>' +
-                            '<td>' + item.nama_mesin + '</td>' +
-                            '<td>' + item.no_urut_mesin + '</td>' +
-                            '<td>' + item.tanggal_rusak + '</td>' +
-                            '<td>' + item.masalah + '</td>' +
-                            '</tr>';
-                        tbody.append(row);
-                    });
-                } else {
-                    tbody.append('<tr><td colspan="5">Tidak ada data yang tersedia.</td></tr>');
-                }
-            } else {
-                console.error('Data tidak berhasil diambil:', resp);
-            }
-
-
 
         },
 
