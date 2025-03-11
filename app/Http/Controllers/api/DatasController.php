@@ -13,6 +13,7 @@ class DatasController extends Controller
     public function insWarga(Request $request)
     {
         // dd($request->all());
+        // dd($request->user()->name);
         $cekDouble = WargaModel::where('blok', $request->blok)->where('status_warga', 'Tinggal')
             ->count();
 
@@ -36,6 +37,7 @@ class DatasController extends Controller
             'no_telp' => $request->no_telp,
             'status_warga' => 'Terdaftar',
             'keterangan' => $request->keterangan,
+            'input_by' => $request->user()->name,
         ]);
 
         if ($insWarga) {

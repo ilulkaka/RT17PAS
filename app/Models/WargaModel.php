@@ -21,5 +21,6 @@ class WargaModel extends Model
         'status_tinggal',
         'status_warga',
         'keterangan',
+        'input_by',
     ];
 }
