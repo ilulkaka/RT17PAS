@@ -23,8 +23,9 @@ $(document).ready(function() {
         getListWarga();
     });
 
-    $("#btn_close").on("click", function() {
-        location.reload();
+    $('#modal_tw').on('hidden.bs.modal', function () {
+        $('.modal-backdrop').remove();
+        $('body').removeClass('modal-open');
     });
 
 
@@ -65,6 +66,7 @@ $(document).ready(function() {
         $("#e_jk").val(datas.jenis_kelamin);
         $("#e_status_tinggal").val(datas.status_tinggal);
         $("#e_no_telp").val(datas.no_telp);
+        $("#e_status_warga").val(datas.status_warga);
         $("#e_keterangan").val(datas.keterangan);
 
         $("#modal_ew").modal("show");

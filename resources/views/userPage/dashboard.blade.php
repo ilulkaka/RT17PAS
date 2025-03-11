@@ -63,14 +63,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3 id="total_jam_lembur#">0</h3>
+                    <h3 id="warga_terdaftar"></h3>
 
-                    <p>Total Warga</p>
+                    <p>Total Warga terdaftar</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-clock"></i>
                 </div>
-                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
+                <a href="{{ url('datas/list_warga') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>

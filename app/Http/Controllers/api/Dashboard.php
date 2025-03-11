@@ -15,28 +15,12 @@ class Dashboard extends Controller
         $tahun = date('Y');
         $tgl_now = date('d');
 
-        $mcfnow = date('Y-m-d', strtotime('1 days'));
-        //TODO:get sales from MCFrame
-        $sales =0;
-        $acp9909 = DB::select(
-            "SELECT ISNULL((SUM(finish_qty)),0)as qty from tb_hasil_produksi WHERE tgl_proses BETWEEN '$awal' and '$now' and line_proses = 320 "
-        );
-        $lembur =0;
-        $mesinstop = $this->mesinstop();
-        $marqueExpres = DB::select("SELECT b.tag, b.warna_tag, COUNT(b.warna_tag)as tot, b.finish from
-        (SELECT lot_no from tb_next_process WHERE status_wip = 'In')a 
-        LEFT JOIN 
-        (select lot_no, tag, warna_tag, finish from tb_workresult WHERE tag = LOWER('EXPRES'))b on a.lot_no = b.lot_no
-        WHERE b.tag is not NULL
-        GROUP BY b.tag, b.warna_tag, b.finish");
-
+        $wargaTerdaftar = DB::table('tb_warga')
+            ->where('status_warga', 'Terdaftar')
+            ->count();
         return [
             'success' => true,
-            'salespcs' => $sales,
-            'acp9909' => $acp9909[0]->qty,
-            'lembur' => $lembur,
-            'mesinstop' => $mesinstop,
-            'marqueexpres' => $marqueExpres,
+            'wargaTerdaftar' => $wargaTerdaftar,
         ];
     }
 

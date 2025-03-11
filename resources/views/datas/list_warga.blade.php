@@ -8,8 +8,8 @@
 
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-tambah" id="btn_tambah" name="btn_tambah" data-bs-toggle="modal"
-                data-bs-target="#modal_tw"><i class="fas fa-user-plus"></i><u>
+            <button type="button" class="btn btn-outline" style="color: blue" id="btn_tambah" name="btn_tambah"
+                data-bs-toggle="modal" data-bs-target="#modal_tw"><i class="fas fa-user-plus"></i><u>
                     Tambah</u></button>
             <div class="card">
                 <div class="card-header card-color-list">
@@ -77,9 +77,8 @@
     </div>
 
     <!-- Modal Tambah Warga (TW) -->
-    <div class="modal fade" id="modal_tw" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade" id="modal_tw" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-info">
                     <h4 class="modal-title" id="exampleModalLongTitle">Form Entry Data Warga</h4>
@@ -142,13 +141,15 @@
                             <div class="form-group col-md-12">
                                 <strong>Keterangan</strong>
                                 <textarea name="keterangan" id="keterangan" cols="60" rows="2" class="form-control rounded-0"
-                                    placeholder="Isi keterangan jika ada." required></textarea>
+                                    placeholder="Isi keterangan jika ada."></textarea>
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-keluar btn-flat col-md-3" id="btn_close">Close</button>
+                        <button type="button" class="btn btn-keluar col-md-2" data-bs-dismiss="modal"
+                            aria-label="Close">Close
+                        </button>
                         <button type="submit" class="btn btn-update btn-flat col-md-3" id="btn_submit">Save</button>
                     </div>
 
@@ -222,6 +223,14 @@
                                     placeholder="No Telp">
                             </div>
                             <div class="form-group col-md-12">
+                                <strong>Status Warga</strong>
+                                <select name="e_status_warga" id="e_status_warga" class="form-control rounded-0"
+                                    style="width: 100%;" required>
+                                    <option value="Terdaftar">Terdaftar</option>
+                                    <option value="Pindah">Pindah</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
                                 <strong>Keterangan</strong>
                                 <textarea name="e_keterangan" id="e_keterangan" cols="60" rows="2" class="form-control rounded-0"
                                     placeholder="Isi keterangan jika ada."></textarea>
@@ -230,7 +239,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-keluar" data-bs-dismiss="modal" aria-label="Close">Close
+                        <button type="button" class="btn btn-keluar col-md-2" data-bs-dismiss="modal"
+                            aria-label="Close">Close
                         </button>
                         <button type="submit" class="btn btn-update btn-flat col-md-3" id="e_btn_submit">Save</button>
                     </div>

@@ -141,7 +141,7 @@ function allLine(key){
 function get_dataDashboard(key){
     $("#hasil_produksi").html('Loading...');
     $("#hasil_sales").html('Loading...');
-    $("#total_jam_lembur").html('Loading...');
+    $("#warga_terdaftar").html('Loading...');
     $('#marqueeExpres').html(`Loading...`);
     $.ajax({
         url: APP_BACKEND + "dashboard/get_dataDashboard",
@@ -153,25 +153,15 @@ function get_dataDashboard(key){
 
         // =========== Hasil Produksi, Sales dan Lembur ==========
         success: function(resp) {
-            let hasilProduksi = parseFloat(resp.acp9909);
+            let wargaTerdaftar = parseFloat(resp.wargaTerdaftar);
             let hasilSales = parseFloat(resp.salespcs);
             let totalJamLembur = parseFloat(resp.lembur);
 
-            if (isNaN(hasilProduksi)) {
-                hasilProduksi = 0;
+            if (isNaN(wargaTerdaftar)) {
+                wargaTerdaftar = 0;
             }
 
-            if (isNaN(hasilSales)) {
-                hasilSales = 0;
-            }
-
-            if (isNaN(totalJamLembur)) {
-                totalJamLembur = 0;
-            }
-
-            $("#hasil_produksi").html(hasilProduksi.toLocaleString() + ' Pcs');
-            $("#hasil_sales").html(hasilSales.toLocaleString() + ' Pcs');
-            $("#total_jam_lembur").html(totalJamLembur.toLocaleString() + ' Jam');
+            $("#warga_terdaftar").html(wargaTerdaftar.toLocaleString() + ' Warga');
 
             // ================= Marque express =======================================
 
@@ -206,7 +196,7 @@ function get_dataDashboard(key){
             </span></span>`;
                 });
             } else {
-                marqueeContent = '<span class="marquee-item">EXPRES : 0</span>';
+                marqueeContent = '<span class="marquee-item">Loading...</span>';
             }
 
             // Menambahkan konten ke elemen marquee

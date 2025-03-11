@@ -13,6 +13,17 @@ class DatasController extends Controller
     public function insWarga(Request $request)
     {
         // dd($request->all());
+        $cekDouble = WargaModel::where('blok', $request->blok)->where('status_warga', 'Tinggal')
+            ->count();
+
+            if ($cekDouble > 0) {
+                return
+                [
+                    'success' => false,
+                    'message' => 'Data sudah ada.',
+                ];
+            }
+
         $insWarga = WargaModel::create([
             'id_warga' => str::uuid(),
             'no_kk' => $request->no_kk,
@@ -23,6 +34,7 @@ class DatasController extends Controller
             'jenis_kelamin' => $request->jk,
             'status_tinggal' => $request->status_tinggal,
             'no_telp' => $request->no_telp,
+            'status_warga' => 'Terdaftar',
             'keterangan' => $request->keterangan,
         ]);
 

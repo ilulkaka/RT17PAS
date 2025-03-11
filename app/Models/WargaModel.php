@@ -19,6 +19,7 @@ class WargaModel extends Model
         'jenis_kelamin',
         'no_telp',
         'status_tinggal',
+        'status_warga',
         'keterangan',
     ];
 }
