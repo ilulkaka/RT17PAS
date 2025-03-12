@@ -349,6 +349,13 @@ return [
                     'url' => 'undermaintenance',
                     'icon' => 'fas fa-bullhorn nav-icon',
                 ],
+                [
+                    'text' => 'LPJ',
+                    'url' => 'keuangan/frm_lpj',
+                    'icon' => 'fas fa-bullhorn nav-icon',
+                    'can' => ['role-admin'],
+                    'active' => ['keuangan/rpt*']
+                ],
             ],
         ],
         [

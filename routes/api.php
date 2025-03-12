@@ -14,6 +14,7 @@ use App\Http\Controllers\api\FoundryController;
 use App\Http\Controllers\api\NotifController;
 
 use App\Http\Controllers\api\DatasController;
+use App\Http\Controllers\api\KeuanganController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -190,4 +191,9 @@ Route::middleware(['auth:sanctum'])->group(function(){
 Route::middleware(['auth:sanctum','ability:admin,ins_data_warga'])->group(function(){
     Route::post('datas/ins_warga',[DatasController::class,'insWarga']);
     Route::patch('datas/edt_warga',[DatasController::class,'edtWarga']);
+});
+
+Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
+    Route::post('keuangan/ins_lpj',[KeuanganController::class,'insLpj']);
+    Route::get('keuangan/list_lpj',[KeuanganController::class,'listLpj']);
 });

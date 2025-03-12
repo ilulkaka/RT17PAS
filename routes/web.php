@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\api\PPICController;
 use App\Http\Controllers\api\TECHController;
 use App\Http\Middleware\CheckAbility;
+use App\Http\Controllers\api\KeuanganController;
 
 Route::get('/login',[PageController::class,'login'])->middleware('guest')->name('login');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
@@ -66,8 +67,14 @@ Route::middleware(['checkability:admin'])->group(function(){
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum'])->group(function(){
-    Route::get('keuangan/frm_iuran_warga', [PageController::class,'frmIuranWarga']);
-    Route::get('datas/list_warga', [PageController::class,'listWarga']);
+Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
+    Route::get('keuangan/rpt/list_lpj', [PageController::class,'listLpj']);
+    Route::get('keuangan/frm_lpj', [PageController::class,'frmLpj']);
+    Route::get('keuangan/rpt/cetak_lpj/{tgl_awal}/{tgl_akhir}', [KeuanganController::class,'cetakLpj']);
+});
+
+Route::middleware(['checkability:admin'])->group(function(){
+    Route::get('admin/userlist', [PageController::class,'userlist'])->name('userlist');
+    Route::get('admin/register', [PageController::class,'register']);
 });
 

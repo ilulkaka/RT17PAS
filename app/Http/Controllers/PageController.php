@@ -150,5 +150,13 @@ class PageController extends Controller
         return view('datas.list_warga');
     }
 
+    public function frmLpj(){
+        return view('keuangan.frm_lpj');
+    }
+
+    public function listLpj(){
+        return view('keuangan.list_lpj');
+    }
+
  
 }
