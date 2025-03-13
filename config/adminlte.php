@@ -352,7 +352,7 @@ return [
                 [
                     'text' => 'LPJ',
                     'url' => 'keuangan/frm_lpj',
-                    'icon' => 'fas fa-bullhorn nav-icon',
+                    'icon' => 'fas fa-money-bill-wave nav-icon',
                     'can' => ['role-admin'],
                     'active' => ['keuangan/rpt*']
                 ],

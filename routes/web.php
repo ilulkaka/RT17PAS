@@ -68,6 +68,7 @@ Route::middleware(['checkability:admin'])->group(function(){
 // });
 
 Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
+    Route::get('datas/list_warga', [PageController::class,'listWarga']);
     Route::get('keuangan/rpt/list_lpj', [PageController::class,'listLpj']);
     Route::get('keuangan/frm_lpj', [PageController::class,'frmLpj']);
     Route::get('keuangan/rpt/cetak_lpj/{tgl_awal}/{tgl_akhir}', [KeuanganController::class,'cetakLpj']);

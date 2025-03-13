@@ -15,11 +15,36 @@ class Dashboard extends Controller
         $tahun = date('Y');
         $tgl_now = date('d');
 
+        $saldo = DB::select("SELECT 
+        (COALESCE(a.nominal, 0) + COALESCE(b.masuk, 0) - COALESCE(c.keluar, 0)) AS saldo
+            FROM 
+        (SELECT nominal FROM tb_beginning LIMIT 1) a
+            LEFT JOIN 
+        (SELECT SUM(nominal) AS masuk FROM tb_lpj WHERE jenis = 'Masuk') b ON 1=1
+            LEFT JOIN 
+        (SELECT SUM(nominal) AS keluar FROM tb_lpj WHERE jenis = 'Keluar') c ON 1=1");
+
         $wargaTerdaftar = DB::table('tb_warga')
             ->where('status_warga', 'Terdaftar')
             ->count();
+
+        $pemasukanBulanIni = DB::select("SELECT SUM(nominal) AS total_masuk
+            FROM tb_lpj
+            WHERE jenis = 'Masuk'
+            AND MONTH(tgl_transaksi) = MONTH(CURRENT_DATE)
+            AND YEAR(tgl_transaksi) = YEAR(CURRENT_DATE)");
+
+        $pengeluaranBulanIni = DB::select("SELECT SUM(nominal) AS total_keluar
+            FROM tb_lpj
+            WHERE jenis = 'Keluar'
+            AND MONTH(tgl_transaksi) = MONTH(CURRENT_DATE)
+            AND YEAR(tgl_transaksi) = YEAR(CURRENT_DATE)");
+
         return [
             'success' => true,
+            'saldo' => $saldo[0]->saldo,
+            'pemasukanBulanIni' => $pemasukanBulanIni[0]->total_masuk,
+            'pengeluaranBulanIni' => $pengeluaranBulanIni[0]->total_keluar,
             'wargaTerdaftar' => $wargaTerdaftar,
         ];
     }

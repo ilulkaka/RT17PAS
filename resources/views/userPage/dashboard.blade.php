@@ -14,7 +14,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3 id="hasil_produksi#">0</h3>
+                    <h3 id="saldo">0</h3>
 
                     <p>Saldo</p>
                 </div>
@@ -30,7 +30,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3 id="hasil_sales#">0</h3>
+                    <h3 id="pemasukan_bulan_ini">0</h3>
 
                     <p>Pemasukan bulan ini</p>
                 </div>
@@ -47,7 +47,7 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <!-- <h3>Detail</h3> -->
-                    <h3 id="success-rate#">0</h3>
+                    <h3 id="pengeluaran_bulan_ini">0</h3>
 
                     <p>Pengeluaran bulan ini</p>
                 </div>

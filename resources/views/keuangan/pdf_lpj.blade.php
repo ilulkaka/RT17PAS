@@ -63,6 +63,12 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- Logo di bawah tabel -->
+    <div style="text-align: right; margin-top: 50px; margin-right: 40px;">
+        <p>Mengetahui,</p>
+        <img src="{{ public_path('assets/img/mengetahui.png') }}" alt="logo" style="width: 70px; height: auto;">
+    </div>
 </body>
 
 </html>
