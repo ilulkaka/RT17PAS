@@ -14,7 +14,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3 id="saldo" class="h1 h2-sm h3-md h4-lg">0</h3>
+                    <h3 id="saldo">0</h3>
 
                     <p>Saldo</p>
                 </div>
