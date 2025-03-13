@@ -62,34 +62,6 @@
     z-index: 2;
 }
 
-.marquee-item {
-    margin-right: 50px;
-    /* Adjust the value as needed */
-}
-
-.warna-biru {
-    color: blue;
-}
-
-.warna-hijau {
-    color: green;
-}
-
-.warna-merah {
-    color: red;
-}
-
-.warna-kuning {
-    color: rgb(137, 137, 5);
-}
-
-.warna-ungu {
-    color: purple;
-}
-
-.warna-orange {
-    color: orange;
-}
 
 .spinner-overlay {
     position: fixed;
@@ -121,4 +93,13 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.small-box h3 {
+    font-size: 4vw; /* 4% dari lebar viewport */
+    max-width: 100%; /* Mencegah teks keluar dari box */
+    white-space: nowrap; /* Mencegah teks turun ke bawah */
+    overflow: hidden; /* Menghindari teks keluar */
+    text-overflow: ellipsis; /* Menampilkan "..." jika teks terlalu panjang */
+    font-size: 2.5em; /* Skala berdasarkan ukuran parent */
 }
