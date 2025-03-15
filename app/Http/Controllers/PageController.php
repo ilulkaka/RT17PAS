@@ -14,6 +14,11 @@ class PageController extends Controller
         return view('login-page');
     }
 
+    public function guest(){
+
+        return view('userPage.guest');
+    }
+
     public function home(){
 
         return view('userPage.dashboard');

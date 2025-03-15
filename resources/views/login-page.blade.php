@@ -67,7 +67,7 @@
                             <br>
                             <div class="footer d-flex justify-content-between">
                                 <button type="button" class="btn btn-lg btn-warning col-md-6 rounded-0" id="btn-guest"
-                                    name="btn-guest" disabled>
+                                    name="btn-guest">
                                     <i class="fa fa-user"></i> Guest
                                 </button>
                                 <button type="submit" class="btn btn-lg btn-success col-md-6 rounded-0" id="btn-login">

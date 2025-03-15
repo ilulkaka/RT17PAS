@@ -122,7 +122,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('produksi/excel_shikakari',[ProduksiController::class,'excel_shikakari']);
 
     //=============dashboard==================================
-    Route::get('dashboard/get_dataDashboard',[Dashboard::class,'get_dataDashboard']);
+    // Route::get('dashboard/get_dataDashboard',[Dashboard::class,'get_dataDashboard']);
     Route::get('dashboard/get_laporproduksi',[Dashboard::class,'get_laporproduksi']);
     Route::get('dashboard/get_successrate',[ProduksiController::class,'get_successrate']);
 
@@ -183,6 +183,8 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('foundry/notif_permintaan_sleeve',[NotifController::class,'notifPermintaanSleeve']);
     
 });
+
+Route::get('dashboard/get_dataDashboard',[Dashboard::class,'get_dataDashboard']);
 
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('datas/list_warga',[DatasController::class,'listWarga']);

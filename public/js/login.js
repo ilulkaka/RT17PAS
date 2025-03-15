@@ -38,4 +38,8 @@ $(document).ready(function() {
 
         return false;
     });
+
+    $("#btn-guest").on("click", function(){
+        window.location.href = APP_URL + "/guest";
+    });
 });

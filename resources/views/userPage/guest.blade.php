@@ -1,13 +1,9 @@
+@extends('layout.app_guest')
 @section('plugins.Select2', true)
-@section('plugins.Chartjs', true)
-@extends('layout.app')
 
 {{-- Customize layout sections --}}
 
 @section('content_header_title', 'Dashboard')
-
-{{-- Content body: main page content --}}
-
 @section('content_body')
     <div class="row">
         <div class="col-lg-3 col-6">
@@ -82,7 +78,7 @@
             </b>
         </marquee>
     </div>
-    
+
 @stop
 
 {{-- Push extra CSS --}}
