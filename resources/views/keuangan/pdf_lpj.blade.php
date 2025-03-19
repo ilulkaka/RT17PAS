@@ -41,7 +41,14 @@
     <br>
     <p style="text-align: left; margin-bottom:-1%"><strong>Periode:</strong> {{ $tgl_awal }} - {{ $tgl_akhir }}
     </p>
-    <table>
+    @php
+        function formatToFloat($value)
+        {
+            return (float) str_replace(',', '.', str_replace('.', '', $value));
+        }
+    @endphp
+
+    <table border="1">
         <thead>
             <tr>
                 <th>Tanggal</th>
@@ -52,22 +59,46 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $totalMasuk = 0;
+                $totalKeluar = 0;
+                $totalSaldo = 0;
+            @endphp
+
             @foreach ($dataTransaksi as $row)
+                @php
+                    $masuk = formatToFloat($row['masuk']);
+                    $keluar = formatToFloat($row['keluar']);
+                    $saldo = formatToFloat($row['saldo']);
+
+                    $totalMasuk += $masuk;
+                    $totalKeluar += $keluar;
+                    $totalSaldo = $saldo;
+                @endphp
                 <tr>
                     <td>{{ date('d-m-Y', strtotime($row['tgl_transaksi'])) }}</td>
                     <td style="text-align: left">{{ $row['deskripsi'] }}</td>
-                    <td style="text-align: right">{{ $row['masuk'] }}</td>
-                    <td style="text-align: right">{{ $row['keluar'] }}</td>
-                    <td style="text-align: right"><strong>{{ $row['saldo'] }}</strong></td>
+                    <td style="text-align: right">{{ number_format($masuk, 2, ',', '.') }}</td>
+                    <td style="text-align: right">{{ number_format($keluar, 2, ',', '.') }}</td>
+                    <td style="text-align: right"><strong>{{ number_format($saldo, 2, ',', '.') }}</strong></td>
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" style="text-align: center"><strong>T o t a l :</strong></td>
+                <td style="text-align: right"><strong>{{ number_format($totalMasuk, 2, ',', '.') }}</strong></td>
+                <td style="text-align: right"><strong>{{ number_format($totalKeluar, 2, ',', '.') }}</strong></td>
+                <td style="text-align: right"><strong>{{ number_format($totalSaldo, 2, ',', '.') }}</strong></td>
+            </tr>
+        </tfoot>
     </table>
 
     <!-- Logo di bawah tabel -->
-    <div style="text-align: right; margin-top: 50px; margin-right: 40px;">
+    <div style="text-align: right; margin-top: 20px; margin-right: 40px;">
         <p>Mengetahui,</p>
-        <img src="{{ public_path('assets/img/mengetahui.png') }}" alt="logo" style="width: 70px; height: auto;">
+        <img src="{{ public_path('assets/img/mengetahui.png') }}" alt="logo"
+            style="width: 70px; height: auto; margin-top:-10px">
     </div>
 </body>
 

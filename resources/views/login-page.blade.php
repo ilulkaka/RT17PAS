@@ -22,9 +22,10 @@
 
 <body>
     <div
-        style="background-image: url('{{ asset('/assets/img/background-login.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;">
+        style="background-image:''; background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;">
         <!-- Optional content centered within the full-screen background -->
-        <div style="text-align: center; background-color: rgba(255, 255, 255, 0.5); padding: 20px; ">
+        <div
+            style="text-align: center; background-color: rgba(255, 255, 255, 1); padding: 20px; border:1px solid rgb(92, 105, 179) ">
 
 
             <div class="text-center mb-4">
@@ -66,11 +67,11 @@
                             <hr>
                             <br>
                             <div class="footer d-flex justify-content-between">
-                                <button type="button" class="btn btn-lg btn-warning col-md-6 rounded-0" id="btn-guest"
-                                    name="btn-guest" disabled>
+                                <button type="button" class="btn btn-lg btn-secondary col-md-6 rounded-0"
+                                    id="btn-guest" name="btn-guest" disabled>
                                     <i class="fa fa-user"></i> Guest
                                 </button>
-                                <button type="submit" class="btn btn-lg btn-success col-md-6 rounded-0" id="btn-login">
+                                <button type="submit" class="btn btn-lg btn-primary col-md-6 rounded-0" id="btn-login">
                                     <i class="fas fa-sign-in-alt"></i> Login
                                 </button>
                             </div>
