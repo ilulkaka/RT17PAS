@@ -67,6 +67,8 @@ Route::middleware(['checkability:admin'])->group(function(){
 //     return view('welcome');
 // });
 
+Route::get('guest',[PageController::class,'guest']);
+
 Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
     Route::get('datas/list_warga', [PageController::class,'listWarga']);
     Route::get('keuangan/rpt/list_lpj', [PageController::class,'listLpj']);

@@ -67,8 +67,13 @@
                             <hr>
                             <br>
                             <div class="footer d-flex justify-content-between">
+<<<<<<< HEAD
                                 <button type="button" class="btn btn-lg btn-secondary col-md-6 rounded-0"
                                     id="btn-guest" name="btn-guest" disabled>
+=======
+                                <button type="button" class="btn btn-lg btn-warning col-md-6 rounded-0" id="btn-guest"
+                                    name="btn-guest">
+>>>>>>> 841fe489172a7d2dcb024812793851fae8525553
                                     <i class="fa fa-user"></i> Guest
                                 </button>
                                 <button type="submit" class="btn btn-lg btn-primary col-md-6 rounded-0" id="btn-login">
