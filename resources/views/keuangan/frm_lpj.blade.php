@@ -29,9 +29,15 @@
                             </div> --}}
                             <div class="form-group col-md-12">
                                 <strong>Deskripsi</strong>
-                                <textarea name="deskripsi" id="deskripsi" cols="60" rows="2" class="form-control rounded-0"
-                                    placeholder="Isi deskripsi" required></textarea>
+                                <input class="form-control rounded-0" list="list_deskripsi" id="deskripsi" name="deskripsi"
+                                    placeholder="Ketik atau pilih...">
+                                <datalist id="list_deskripsi">
+                                    <option value="Iuran Warga">
+                                    <option value="Gaji Penarik Sampah">
+                                    <option value="Ongkos Potong Rumput">
+                                </datalist>
                             </div>
+
                             <div class="form-group col-md-12">
                                 <strong>Jenis</strong>
                                 <select name="jenis" id="jenis" class="form-control rounded-0" required>
@@ -56,10 +62,11 @@
                         </div>
 
                     </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-keluar col-md-3" id="btn_list_lpj">List Keuangan</button>
-                        <button type="submit" class="btn btn-update btn-flat col-md-3" id="btn_submit">Save</button>
+                    <div class="card-footer d-flex justify-content-between gap-2">
+                        <button type="button" class="btn btn-keluar col-md-6" id="btn_list_lpj">List Keuangan</button>
+                        <button type="submit" class="btn btn-update btn-flat col-md-6" id="btn_submit">Save</button>
                     </div>
+
                 </form>
             </div>
         </div>

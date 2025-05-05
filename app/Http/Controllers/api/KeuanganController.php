@@ -104,9 +104,17 @@ class KeuanganController extends Controller
     $saldoAwal = BeginningModel::where('periode', $tgl_awal)->value('nominal') ?? 0;
 
     // Ambil transaksi dalam rentang tanggal
-    $transaksi = LpjModel::whereBetween('tgl_transaksi', [$tgl_awal, $tgl_akhir])
-        ->orderBy('tgl_transaksi')
-        ->get();
+    $transaksi = LpjModel::select(
+        'tgl_transaksi',
+        'deskripsi',
+        'jenis',
+        DB::raw('SUM(nominal) as nominal')
+    )
+    ->whereBetween('tgl_transaksi', [$tgl_awal, $tgl_akhir])
+    ->groupBy('tgl_transaksi', 'deskripsi', 'jenis')
+    ->orderBy('tgl_transaksi')
+    ->get();
+
 
     // Hitung saldo berjalan
     $saldo = $saldoAwal;
