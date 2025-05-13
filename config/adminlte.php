@@ -345,8 +345,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Iuran Warga',
-                    // 'url' => 'keuangan/frm_iuran_warga',
-                    'url' => 'undermaintenance',
+                    'url' => 'keuangan/frm_iuran_warga',
                     'icon' => 'fas fa-bullhorn nav-icon',
                 ],
                 [

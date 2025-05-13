@@ -20,7 +20,7 @@ function getListLpj (){
         listLpj.ajax.reload();
     } else {
         listLpj = $('#tb_list_lpj').DataTable({
-            responsive: true,
+            responsive: false,
             processing: true,
             serverSide: true,
             searching: false,

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\LpjModel;
 use App\Models\BeginningModel;
+use App\Models\IuranWargaModel;
 use PDF;
 use Carbon\Carbon;
 
@@ -148,5 +149,110 @@ class KeuanganController extends Controller
     $pdf = Pdf::loadView('keuangan.pdf_lpj', compact('dataTransaksi', 'tgl_awal', 'tgl_akhir'));
 
     return $pdf->stream('Laporan_LPJ.pdf'); // Tampilkan langsung di browser
+    }
+
+    public function insIuranWarga (Request $request)
+    {
+        // dd($request->all());
+
+        $tgl_bayar = $request->tgl_bayar;
+$blok = $request->blok;
+$periode_awal = $request->periode_awal;
+$periode_akhir = $request->periode_akhir;
+$nominal = $request->nominal;
+// dd($request->user()->name);
+
+// Konversi ke objek tanggal
+$awal = Carbon::createFromFormat('Y-m', $periode_awal)->startOfMonth();
+$akhir = Carbon::createFromFormat('Y-m', $periode_akhir)->startOfMonth();
+
+if ($awal->equalTo($akhir)) {
+    // Insert satu record
+    $insKeuangan = IuranWargaModel::create([
+        'id_iuran' => str::uuid(),
+        'tgl_bayar' => $tgl_bayar,
+        'blok' => $blok,
+        'periode' => $awal->format('Y-m').'-01',
+        'nominal' => $nominal,
+        'inputor' => ($request->user()->name),
+    ]);
+} else {
+    // Insert sesuai jumlah bulan antara awal dan akhir
+    while ($awal <= $akhir) {
+        $insKeuangan = IuranWargaModel::create([
+            'id_iuran' => str::uuid(),
+            'tgl_bayar' => $tgl_bayar,
+            'blok' => $blok,
+            'periode' => $awal->format('Y-m').'-01',
+            'nominal' => $nominal,
+            'inputor' => ($request->user()->name),
+        ]);
+
+        $awal->addMonth(); // tambahkan 1 bulan
+    }
+}
+
+
+        if ($insKeuangan) {
+            return
+            [
+                'success' => true,
+                'message' => 'Data berhasil disimpan',
+            ];
+        } else {
+            return
+            [
+                'success' => false,
+                'message' => 'Data gagal disimpan',
+            ];
+        }
+    }
+
+    public function listIuranWarga (Request $request)
+    {
+        // dd($request->all());
+        $draw = $request->input('draw');
+        $search = $request->input('search')['value'];
+        $start = (int) $request->input('start');
+        $length = (int) $request->input('length');
+
+        $periode = $request->periode;
+        $periode_awal = $periode . '-01-01';
+        $periode_akhir = $periode . '-12-31';
+    
+        $raw = IuranWargaModel::whereBetween('tgl_bayar', [$periode_awal, $periode_akhir])
+            ->select('blok', 'periode', 'nominal') // periode = 2025-05-01 dst
+            ->when($search, function ($query) use ($search) {
+                $query->where('blok', 'like', '%' . $search . '%');
+            })
+            ->orderBy('blok', 'asc')
+            ->get();
+    
+        $result = [];
+    
+        foreach ($raw->groupBy('blok') as $blok => $items) {
+            $row = ['blok' => $blok];
+    
+            // isi 01-2025 s/d 12-2025 dengan nilai default "-"
+            for ($i = 1; $i <= 12; $i++) {
+                $key = str_pad($i, 2, '0', STR_PAD_LEFT) . '-' . $periode;
+                $row[$key] = '-';
+            }
+    
+            foreach ($items as $item) {
+                $bulan = date('m', strtotime($item->periode));
+                $key = $bulan . '-' . $periode;
+                $row[$key] = number_format($item->nominal); // atau tanpa format
+            }
+    
+            $result[] = $row;
+        }
+    
+        return response()->json([
+            'draw' => intval($request->input('draw')),
+            'recordsTotal' => count($result),
+            'recordsFiltered' => count($result),
+            'data' => $result
+        ]);
     }
 }

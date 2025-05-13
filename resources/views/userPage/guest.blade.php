@@ -17,7 +17,7 @@
                 <div class="icon">
                     <i class="fas fa-chart-bar"></i>
                 </div>
-                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
+                <a href="{{ url('keuangan/rpt/list_lpj') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>

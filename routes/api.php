@@ -197,5 +197,8 @@ Route::middleware(['auth:sanctum','ability:admin,ins_data_warga'])->group(functi
 
 Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
     Route::post('keuangan/ins_lpj',[KeuanganController::class,'insLpj']);
-    Route::get('keuangan/list_lpj',[KeuanganController::class,'listLpj']);
+    Route::post('keuangan/ins_iuran_warga',[KeuanganController::class,'insIuranWarga']);
+    Route::get('keuangan/list_iuran_warga',[KeuanganController::class,'listIuranWarga']);
 });
+
+Route::get('keuangan/list_lpj',[KeuanganController::class,'listLpj']);
