@@ -26,7 +26,7 @@
                             <label class="mr-2 mb-0"><strong>Periode:</strong></label>
 
                             <select class="form-control mr-3" style="width: 150px;" id="periode" name="periode">
-                                @for ($i = date('Y'); $i >= 2025; $i--)
+                                @for ($i = date('Y'); $i >= 2024; $i--)
                                     <option value="{{ $i }}" {{ $i == date('Y') ? 'selected' : '' }}>
                                         {{ $i }}
                                     </option>

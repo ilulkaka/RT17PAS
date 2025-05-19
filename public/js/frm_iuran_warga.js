@@ -45,7 +45,7 @@ $(document).ready(function() {
                 if (resp.success) {
                     fireAlert("success", resp.message);
                     $("#frmAddIuran")[0].reset();
-                    // listIuran.ajax.reload(null, false);
+                    table.ajax.reload(null, false);
                     $("#btn_submit").prop("disabled", false).text("Simpan");
                 } else {
                     infoFireAlert("error", resp.message);
@@ -113,7 +113,7 @@ $(document).ready(function() {
 //     }
 // }
 
-let table; // Deklarasikan variabel `table` di sini
+var table; // Deklarasikan variabel `table` di sini
 
 // Fungsi untuk membuat kolom dinamis berdasarkan tahun
 function generateColumns(tahun) {

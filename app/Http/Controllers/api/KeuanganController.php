@@ -156,41 +156,41 @@ class KeuanganController extends Controller
         // dd($request->all());
 
         $tgl_bayar = $request->tgl_bayar;
-$blok = $request->blok;
-$periode_awal = $request->periode_awal;
-$periode_akhir = $request->periode_akhir;
-$nominal = $request->nominal;
-// dd($request->user()->name);
+        $blok = $request->blok;
+        $periode_awal = $request->periode_awal;
+        $periode_akhir = $request->periode_akhir;
+        $nominal = $request->nominal;
+        // dd($request->user()->name);
 
-// Konversi ke objek tanggal
-$awal = Carbon::createFromFormat('Y-m', $periode_awal)->startOfMonth();
-$akhir = Carbon::createFromFormat('Y-m', $periode_akhir)->startOfMonth();
+        // Konversi ke objek tanggal
+        $awal = Carbon::createFromFormat('Y-m', $periode_awal)->startOfMonth();
+        $akhir = Carbon::createFromFormat('Y-m', $periode_akhir)->startOfMonth();
 
-if ($awal->equalTo($akhir)) {
-    // Insert satu record
-    $insKeuangan = IuranWargaModel::create([
-        'id_iuran' => str::uuid(),
-        'tgl_bayar' => $tgl_bayar,
-        'blok' => $blok,
-        'periode' => $awal->format('Y-m').'-01',
-        'nominal' => $nominal,
-        'inputor' => ($request->user()->name),
-    ]);
-} else {
-    // Insert sesuai jumlah bulan antara awal dan akhir
-    while ($awal <= $akhir) {
-        $insKeuangan = IuranWargaModel::create([
-            'id_iuran' => str::uuid(),
-            'tgl_bayar' => $tgl_bayar,
-            'blok' => $blok,
-            'periode' => $awal->format('Y-m').'-01',
-            'nominal' => $nominal,
-            'inputor' => ($request->user()->name),
-        ]);
+        if ($awal->equalTo($akhir)) {
+            // Insert satu record
+            $insKeuangan = IuranWargaModel::create([
+                'id_iuran' => str::uuid(),
+                'tgl_bayar' => $tgl_bayar,
+                'blok' => $blok,
+                'periode' => $awal->format('Y-m').'-01',
+                'nominal' => $nominal,
+                'inputor' => ($request->user()->name),
+            ]);
+        } else {
+            // Insert sesuai jumlah bulan antara awal dan akhir
+            while ($awal <= $akhir) {
+                $insKeuangan = IuranWargaModel::create([
+                    'id_iuran' => str::uuid(),
+                    'tgl_bayar' => $tgl_bayar,
+                    'blok' => $blok,
+                    'periode' => $awal->format('Y-m').'-01',
+                    'nominal' => $nominal,
+                    'inputor' => ($request->user()->name),
+                ]);
 
-        $awal->addMonth(); // tambahkan 1 bulan
-    }
-}
+                $awal->addMonth(); // tambahkan 1 bulan
+            }
+        }
 
 
         if ($insKeuangan) {
@@ -219,15 +219,15 @@ if ($awal->equalTo($akhir)) {
         $periode = $request->periode;
         $periode_awal = $periode . '-01-01';
         $periode_akhir = $periode . '-12-31';
-    
-        $raw = IuranWargaModel::whereBetween('tgl_bayar', [$periode_awal, $periode_akhir])
+
+        $raw = IuranWargaModel::whereBetween('periode', [$periode_awal, $periode_akhir])
             ->select('blok', 'periode', 'nominal') // periode = 2025-05-01 dst
             ->when($search, function ($query) use ($search) {
                 $query->where('blok', 'like', '%' . $search . '%');
             })
             ->orderBy('blok', 'asc')
             ->get();
-    
+
         $result = [];
     
         foreach ($raw->groupBy('blok') as $blok => $items) {
