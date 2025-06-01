@@ -355,6 +355,13 @@ return [
                     'can' => ['role-admin'],
                     'active' => ['keuangan/rpt*']
                 ],
+                [
+                    'text' => 'List LPJ',
+                    'url' => 'keuangan/rpt/list_lpj',
+                    'icon' => 'fas fa-money-bill-wave nav-icon',
+                    // 'can' => ['role-admin'],
+                    'active' => ['keuangan/rpt*']
+                ],
             ],
         ],
         [
