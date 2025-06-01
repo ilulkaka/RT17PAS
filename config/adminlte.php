@@ -359,7 +359,7 @@ return [
                     'text' => 'List LPJ',
                     'url' => 'keuangan/rpt/list_lpj',
                     'icon' => 'fas fa-money-bill-wave nav-icon',
-                    // 'can' => ['role-admin'],
+                    'can' => ['sect-pengurus'],
                     'active' => ['keuangan/rpt*']
                 ],
             ],
