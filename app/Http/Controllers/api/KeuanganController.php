@@ -208,9 +208,8 @@ class KeuanganController extends Controller
         }
     }
 
-    public function listIuranWarga (Request $request)
+    public function listIuranWarga(Request $request)
     {
-        // dd($request->all());
         $draw = $request->input('draw');
         $search = $request->input('search')['value'];
         $start = (int) $request->input('start');
@@ -220,39 +219,49 @@ class KeuanganController extends Controller
         $periode_awal = $periode . '-01-01';
         $periode_akhir = $periode . '-12-31';
 
-        $raw = IuranWargaModel::whereBetween('periode', [$periode_awal, $periode_akhir])
-            ->select('blok', 'periode', 'nominal') // periode = 2025-05-01 dst
-            ->when($search, function ($query) use ($search) {
-                $query->where('blok', 'like', '%' . $search . '%');
+        // Ambil semua data terlebih dahulu, lalu group by blok
+        $query = IuranWargaModel::whereBetween('periode', [$periode_awal, $periode_akhir])
+            ->select('blok', 'periode', 'nominal')
+            ->when($search, function ($q) use ($search) {
+                $q->where('blok', 'like', '%' . $search . '%');
             })
-            ->orderBy('blok', 'asc')
-            ->get();
+            ->orderBy('blok', 'asc');
+
+        $raw = $query->get();
+
+        // Kelompokkan berdasarkan blok
+        $grouped = $raw->groupBy('blok');
+        $totalRecords = $grouped->count();
+
+        // Ambil hanya blok-blok untuk halaman saat ini
+        $paginatedBloks = $grouped->keys()->slice($start, $length);
 
         $result = [];
-    
-        foreach ($raw->groupBy('blok') as $blok => $items) {
+
+        foreach ($paginatedBloks as $blok) {
+            $items = $grouped[$blok];
             $row = ['blok' => $blok];
-    
-            // isi 01-2025 s/d 12-2025 dengan nilai default "-"
+
             for ($i = 1; $i <= 12; $i++) {
                 $key = str_pad($i, 2, '0', STR_PAD_LEFT) . '-' . $periode;
                 $row[$key] = '-';
             }
-    
+
             foreach ($items as $item) {
                 $bulan = date('m', strtotime($item->periode));
                 $key = $bulan . '-' . $periode;
-                $row[$key] = number_format($item->nominal); // atau tanpa format
+                $row[$key] = number_format($item->nominal);
             }
-    
+
             $result[] = $row;
         }
-    
+
         return response()->json([
-            'draw' => intval($request->input('draw')),
-            'recordsTotal' => count($result),
-            'recordsFiltered' => count($result),
-            'data' => $result
+            'draw' => intval($draw),
+            'recordsTotal' => $totalRecords,
+            'recordsFiltered' => $totalRecords,
+            'data' => $result,
         ]);
     }
+
 }

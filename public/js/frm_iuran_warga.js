@@ -142,8 +142,10 @@ function loadTable(tahun) {
     }
 
     table = $('#tb_list_iuran').DataTable({
-        processing: true,
-        serverSide: true,
+            processing: true,
+            serverSide: true,
+            searching: false,
+            ordering: false,
         ajax: {
             url: APP_BACKEND + 'keuangan/list_iuran_warga',
             beforeSend: function(xhr) {
