@@ -211,11 +211,19 @@ class KeuanganController extends Controller
 
     public function insIuranWarga(Request $request)
     {
+        // dd($request->all());
         $tgl_bayar = $request->tgl_bayar;
-        $blok = $request->blok;
         $periode_awal = $request->periode_awal;
         $periode_akhir = $request->periode_akhir;
         $nominal = $request->nominal;
+        $blok = $request->blok;
+
+        if (strlen($request->blok) !== 6) {
+            return ['message' => "Blok harus terdiri dari 6 karakter, seperti 'A01/01' atau 'B01/02'.",
+                'success' => false,
+            ];
+        }
+        
 
         $awal = Carbon::createFromFormat('Y-m', $periode_awal)->startOfMonth();
         $akhir = Carbon::createFromFormat('Y-m', $periode_akhir)->startOfMonth();
