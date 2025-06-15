@@ -151,6 +151,7 @@ class KeuanganController extends Controller
     return $pdf->stream('Laporan_LPJ.pdf'); // Tampilkan langsung di browser
     }
 
+    /*
     public function insIuranWarga (Request $request)
     {
         // dd($request->all());
@@ -206,7 +207,59 @@ class KeuanganController extends Controller
                 'message' => 'Data gagal disimpan',
             ];
         }
+    }*/
+
+    public function insIuranWarga(Request $request)
+    {
+        $tgl_bayar = $request->tgl_bayar;
+        $blok = $request->blok;
+        $periode_awal = $request->periode_awal;
+        $periode_akhir = $request->periode_akhir;
+        $nominal = $request->nominal;
+
+        $awal = Carbon::createFromFormat('Y-m', $periode_awal)->startOfMonth();
+        $akhir = Carbon::createFromFormat('Y-m', $periode_akhir)->startOfMonth();
+
+        $inputor = $request->user()->name;
+        $inserted = false;
+
+        while ($awal <= $akhir) {
+            $periodeFormatted = $awal->format('Y-m').'-01';
+
+            // Cek apakah data dengan blok dan periode sudah ada
+            $existing = IuranWargaModel::where('blok', $blok)
+                        ->where('periode', $periodeFormatted)
+                        ->exists();
+
+            if (!$existing) {
+                // Jika belum ada, insert
+                IuranWargaModel::create([
+                    'id_iuran' => Str::uuid(),
+                    'tgl_bayar' => $tgl_bayar,
+                    'blok' => $blok,
+                    'periode' => $periodeFormatted,
+                    'nominal' => $nominal,
+                    'inputor' => $inputor,
+                ]);
+                $inserted = true;
+            }
+
+            $awal->addMonth(); // tambahkan 1 bulan
+        }
+
+        if ($inserted) {
+            return [
+                'success' => true,
+                'message' => 'Data berhasil disimpan (yang belum pernah ada)',
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => 'Semua data sudah pernah diinput, tidak ada yang ditambahkan',
+            ];
+        }
     }
+
 
     public function listIuranWarga(Request $request)
     {

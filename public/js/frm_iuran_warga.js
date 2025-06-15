@@ -49,6 +49,7 @@ $(document).ready(function() {
                     $("#btn_submit").prop("disabled", false).text("Simpan");
                 } else {
                     infoFireAlert("error", resp.message);
+                    $("#btn_submit").prop("disabled", false).text("Simpan");
                 }
             })
     });
@@ -144,7 +145,7 @@ function loadTable(tahun) {
     table = $('#tb_list_iuran').DataTable({
             processing: true,
             serverSide: true,
-            searching: false,
+            searching: true,
             ordering: false,
         ajax: {
             url: APP_BACKEND + 'keuangan/list_iuran_warga',
