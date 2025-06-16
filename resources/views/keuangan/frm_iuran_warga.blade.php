@@ -108,6 +108,48 @@
             </form>
         </div>
     </div>
+
+    <!-- Modal Detail Iuran Warga-->
+    <div class="modal fade" id="modal_detail_iuran_warga" tabindex="-1" role="dialog"
+        aria-labelledby="modalShikakariLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalShikakariLabel">Detail Iuran Blok <b id="diw_blok"></b> Periode <b
+                            id="diw_periode"></b></h5>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="modal-body">
+                    <!-- Table Section -->
+                    <div class="table-responsive">
+                        <table id="tb_detail_iuran_warga" class="table table-striped table-hover text-nowrap align-middle"
+                            width="100%">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Id</th>
+                                    <th>Tgl Bayar</th>
+                                    <th>Jumlah</th>
+                                    <th>Periode</th>
+                                    <th>Petugas</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-keluar" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 @stop
 
 @push('css')

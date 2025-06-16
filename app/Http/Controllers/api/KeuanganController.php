@@ -325,4 +325,52 @@ class KeuanganController extends Controller
         ]);
     }
 
+    public function detailIuranWarga(Request $request)
+    {
+
+        $draw = $request->input('draw');
+        $search = $request->input('search')['value'];
+        $start = (int) $request->input('start');
+        $length = (int) $request->input('length');
+
+        $blok = $request->blok;
+        $periode = $request->periode;
+
+        $datas = IuranWargaModel::select('id_iuran', 'blok', 'periode', 'tgl_bayar', 'nominal', 'inputor')
+            ->where('blok', $blok)
+            ->whereYear('periode', $periode)
+            ->orderByRaw('CAST(periode AS DATE) asc')
+            ->skip($start)
+            ->take($length)
+            ->get();
+
+        $count = IuranWargaModel::select('id_iuran', 'blok', 'periode', 'tgl_bayar', 'nominal', 'inputor')
+            ->where('blok', $blok)
+            ->whereYear('periode', $periode)
+            ->count();
+
+        return [
+            'draw' => $draw,
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $datas,
+        ];
+    }
+
+    public function delIuranWarga ($id){
+
+        $del = IuranWargaModel::where('id_iuran', $id)->delete();
+        if ($del) {
+            return [
+                'success' => true,
+                'message' => 'Data berhasil dihapus',
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => 'Data gagal dihapus',
+            ];
+        }
+    }
+
 }

@@ -202,6 +202,8 @@ Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
 Route::middleware(['auth:sanctum','ability:admin,ins_iuran'])->group(function(){
     Route::post('keuangan/ins_iuran_warga',[KeuanganController::class,'insIuranWarga']);
     Route::get('keuangan/list_iuran_warga',[KeuanganController::class,'listIuranWarga']);
+    Route::get('keuangan/detail_iuran_warga',[KeuanganController::class,'detailIuranWarga']);
+    Route::delete('keuangan/del_iuran_warga/{id}',[KeuanganController::class,'delIuranWarga']);
 });
 
 Route::get('keuangan/list_lpj',[KeuanganController::class,'listLpj']);
