@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\LpjModel;
+use App\Models\LogModel;
 use App\Models\BeginningModel;
 use App\Models\IuranWargaModel;
 use PDF;
@@ -357,20 +358,58 @@ class KeuanganController extends Controller
         ];
     }
 
-    public function delIuranWarga ($id){
+    public function delIuranWarga ($id, Request $request){
 
-        $del = IuranWargaModel::where('id_iuran', $id)->delete();
-        if ($del) {
-            return [
-                'success' => true,
-                'message' => 'Data berhasil dihapus',
+        // dd($request->user()->name);
+
+        try {
+            DB::beginTransaction();
+
+            $detailData = IuranWargaModel::where('id_iuran', $id)->first();
+            $details = [
+                'blok' => $detailData['blok'],
+                'periode' => $detailData['periode'],
             ];
-        } else {
+
+            $data = [
+                'id_log' => Str::uuid(),
+                'user_id' => $request->user()->id,
+                'user_name' => $request->user()->name,
+                'activity' => 'delete',
+                'message' => json_encode($details),
+            ];
+
+            LogModel::create($data);
+
+            $del = IuranWargaModel::where('id_iuran', $id)->delete();
+            DB::commit(); // ✅ Semua berhasil, commit data
+
             return [
+                'message' => 'Hapus Berhasil !',
+                'success' => true,
+            ];
+
+        } catch (\Exception $e) {
+            DB::rollBack(); // ❌ Gagal, rollback semua perubahan
+
+            return [
+                'message' => 'Gagal Update: '.$e->getMessage(),
                 'success' => false,
-                'message' => 'Data gagal dihapus',
             ];
         }
+
+
+        // if ($del) {
+        //     return [
+        //         'success' => true,
+        //         'message' => 'Data berhasil dihapus',
+        //     ];
+        // } else {
+        //     return [
+        //         'success' => false,
+        //         'message' => 'Data gagal dihapus',
+        //     ];
+        // }
     }
 
 }
