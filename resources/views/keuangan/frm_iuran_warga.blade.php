@@ -33,6 +33,12 @@
                                 @endfor
                             </select>
 
+                            <label class="mr-2 mb-0"><strong>BLOK :</strong></label>
+
+                            <select class="form-control select2 mr-3" style="width: 150px;" id="selectblok"
+                                name="selectblok">
+                            </select>
+
                             <button class="btn btn-cari mr-2" id="btn_reload">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -159,4 +165,5 @@
 {{-- Push extra scripts --}}
 @push('js')
     <script src="{{ asset('js/frm_iuran_warga.js') }}"></script>
+    <script src="{{ asset('js/selectblok.js') }}"></script>
 @endpush

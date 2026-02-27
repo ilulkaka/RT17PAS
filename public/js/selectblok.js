@@ -1,12 +1,8 @@
 
         $(document).ready(function() {
 
-            $('.select2').select2({
-                theme: 'bootstrap-5'
-            });
-
                 $.ajax({
-                    url: APP_BACKEND + 'produksi/getline',
+                    url: APP_BACKEND + 'keuangan/get_blok',
                     type: 'GET',
                     beforeSend: function(xhr) {
                         xhr.setRequestHeader("Authorization", "Bearer " + key);
@@ -15,16 +11,16 @@
                 })
                 .done(function(resp) {
                     if (resp.success) {
-                        const selectline = $('#selectline');
-                        selectline.empty();
-                        selectline.append('<option value="">Pilih Line...</option>');
+                        const selectblok = $('#selectblok');
+                        selectblok.empty();
+                        // selectblok.append('<option value="">Pilih Blok...</option>');
         
-                        selectline.append('<option value="All">All</option>');
-                        resp.data.forEach(function (line) {
-                            selectline.append('<option value="' + line.kode_line + '">' + line.nama_line + '</option>');
+                        selectblok.append('<option value="All">All</option>');
+                        resp.data.forEach(function (blok) {
+                            selectblok.append('<option value="' + blok.blok + '">' + blok.blok + '</option>');
                         });
         
-                        selectline.trigger('change');
+                        selectblok.trigger('change');
 
                     } else {
                         $("#error").html("<div class='alert alert-danger'><div>Error</div></div>");

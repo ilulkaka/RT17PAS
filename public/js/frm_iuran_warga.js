@@ -1,14 +1,19 @@
 $(document).ready(function() {
 
-
+    $('.select2').select2({
+        theme: 'bootstrap-5',
+        tags: true,
+    });
 
     let tahun = $('#periode').val();
-    loadTable(tahun); // Panggil loadTable dengan tahun yang sudah dipilih
+    let blok1 = "All";
+    loadTable(tahun, blok1); // Panggil loadTable dengan tahun yang sudah dipilih
     
 
     $('#btn_reload').on('click', function () {
         let tahun = $('#periode').val();
-        loadTable(tahun);
+        let blok1 = $("#selectblok").val();
+        loadTable(tahun, blok1);
     });
 
     
@@ -131,7 +136,8 @@ function getDetailIuranWarga (){
                 },
                 data: function(d) {
                     d.periode = $("#diw_periode").text();
-                    d.blok = $("#diw_blok").text();
+                    // d.blok = $("#diw_blok").text();
+                    d.select_blok = $("#selectblok").val();
                 },
                 // complete: function() {
                 //     $("#btn_reload").attr("disabled", false);
@@ -240,7 +246,8 @@ function generateColumns(tahun) {
     return columns;
 }
 
-function loadTable(tahun) {
+function loadTable(tahun, blok1) {
+
     if (table) {
         table.destroy();
         $('#tb_list_iuran').empty(); // kosongkan thead & tbody
@@ -260,6 +267,7 @@ function loadTable(tahun) {
             type: 'GET', // atau POST jika di backend pakai POST
             data: function (d) {
                 d.periode = tahun; // kirim tahun yang dipilih
+                d.blok1 = blok1;
             },
                 complete: function() {
                     $("#btn_reload").attr("disabled", false);

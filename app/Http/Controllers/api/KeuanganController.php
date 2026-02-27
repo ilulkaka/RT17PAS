@@ -15,6 +15,13 @@ use Carbon\Carbon;
 
 class KeuanganController extends Controller
 {
+    public function getBlok(){
+        return [
+            "success"=>true,
+            "data"=>IuranWargaModel::select('blok')->groupBy('blok')->orderBy('blok','asc')->get(),
+        ];
+    }
+
     public function insLpj (Request $request)
     {
         // dd($request->all());
@@ -272,12 +279,14 @@ class KeuanganController extends Controller
 
     public function listIuranWarga(Request $request)
     {
+        // dd($request->all());
         $draw = $request->input('draw');
         $search = $request->input('search')['value'];
         $start = (int) $request->input('start');
         $length = (int) $request->input('length');
 
         $periode = $request->periode;
+        $blok1 = $request->blok1;
         $periode_awal = $periode . '-01-01';
         $periode_akhir = $periode . '-12-31';
 
@@ -286,6 +295,9 @@ class KeuanganController extends Controller
             ->select('blok', 'periode', 'nominal')
             ->when($search, function ($q) use ($search) {
                 $q->where('blok', 'like', '%' . $search . '%');
+            })
+            ->when($blok1 && $blok1 != 'All', function ($q) use ($blok1) {
+                $q->where('blok', $blok1);
             })
             ->orderBy('blok', 'asc');
 
