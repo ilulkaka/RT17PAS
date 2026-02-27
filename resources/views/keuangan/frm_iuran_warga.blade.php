@@ -54,7 +54,7 @@
                 </div>
 
                 <hr style="margin-top: 0%">
-                <div class="card-body table-responsive p-0" style="margin-top: -1%">
+                <div class="card-body table-responsive p-0" style="padding-top: -2%">
                     <table id="tb_list_iuran" class="table table-bordered table-hover table-striped nowrap"
                         style="width:100%">
                     </table>
