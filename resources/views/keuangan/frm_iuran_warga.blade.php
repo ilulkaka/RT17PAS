@@ -21,33 +21,35 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 d-flex align-items-end">
-                            <label class="mr-2 mb-0"><strong>Periode:</strong></label>
+                    <div class="row align-items-end g-2">
 
-                            <select class="form-control mr-3" style="width: 150px;" id="periode" name="periode">
+                        <div class="col-lg-2 col-md-3 col-sm-3 mb-2">
+                            <label><strong>Periode:</strong></label>
+                            <select class="form-control" id="periode" name="periode">
                                 @for ($i = date('Y'); $i >= 2024; $i--)
                                     <option value="{{ $i }}" {{ $i == date('Y') ? 'selected' : '' }}>
                                         {{ $i }}
                                     </option>
                                 @endfor
                             </select>
+                        </div>
 
-                            <label class="mr-2 mb-0"><strong>BLOK :</strong></label>
-
-                            <select class="form-control select2 mr-3" style="width: 150px;" id="selectblok"
-                                name="selectblok">
+                        <div class="col-lg-2 col-md-3 col-sm-3 mb-2">
+                            <label><strong>BLOK:</strong></label>
+                            <select class="form-control select2" id="selectblok" name="selectblok">
                             </select>
+                        </div>
 
-                            <button class="btn btn-cari mr-2" id="btn_reload">
+                        <div class="col-lg-2 col-md-3 col-sm-3 mb-2 d-flex">
+                            <button class="btn btn-cari mr-2 w-100" id="btn_reload">
                                 <i class="fa fa-search"></i>
                             </button>
 
-                            <button class="btn btn-danger rounded-0" id="btn_pdf">
+                            <button class="btn btn-danger w-100 ml-2" id="btn_pdf">
                                 <i class="fas fa-file-pdf"></i>
                             </button>
-
                         </div>
+
                     </div>
                 </div>
 
