@@ -136,7 +136,7 @@ function getDetailIuranWarga (){
                 },
                 data: function(d) {
                     d.periode = $("#diw_periode").text();
-                    // d.blok = $("#diw_blok").text();
+                    d.blok = $("#diw_blok").text();
                     d.select_blok = $("#selectblok").val();
                 },
                 // complete: function() {
