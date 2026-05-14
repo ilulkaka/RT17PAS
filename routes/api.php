@@ -211,6 +211,7 @@ Route::middleware(['auth:sanctum','ability:admin,ins_iuran'])->group(function(){
 
 Route::get('keuangan/list_lpj',[KeuanganController::class,'listLpj']);
 
+Route::get('/list_pengurus',[MobileController::class,'listPengurus']);
 Route::get('/list_warga',[MobileController::class,'listWarga']);
 Route::get('/list_iuran_warga',[MobileController::class,'listIuranWarga']);
 Route::get('/list_blok',[MobileController::class,'listBlok']);

@@ -11,6 +11,13 @@ use App\Models\WargaModel;
 class MobileController extends Controller
 {
 
+    public function listPengurus()
+    {
+        $pengurus = DB::table('tb_pengurus')->where('status', 'Aktif')->get();
+
+        return response()->json(['data' => $pengurus]);
+    }
+
     public function listBlok()
     {
         $blok = DB::table('tb_one')->select('blok')->distinct()->orderBy('blok')->get();
