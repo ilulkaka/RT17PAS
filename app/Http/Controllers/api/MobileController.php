@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\IuranWargaModel;
 use App\Models\WargaModel;
+use App\Models\BeginningModel;
+use App\Models\LpjModel;
 
 class MobileController extends Controller
 {
@@ -48,5 +50,33 @@ class MobileController extends Controller
         return response()->json(['data' => $iuranWarga,
         'success' => true,
         'message' => 'Data iuran warga berhasil diambil']);
+    }
+
+    public function saldoBulanIni()
+    {
+        $start = date('Y-m')."-01";
+        $end = date('Y-m-t');
+
+        $beginning = BeginningModel::where('periode', $start)
+    ->value('nominal') ?? 0;
+
+    $data = LpjModel::whereBetween('tgl_transaksi', [$start, $end])
+    ->selectRaw("
+        SUM(CASE WHEN jenis = 'masuk' THEN nominal ELSE 0 END) as total_masuk,
+        SUM(CASE WHEN jenis = 'keluar' THEN nominal ELSE 0 END) as total_keluar
+    ")
+    ->first();
+
+    $saldo = $beginning + $data->total_masuk - $data->total_keluar;
+
+        return response()->json([
+            'data' => [
+            'saldo' => $saldo,
+            'masuk' => $data->total_masuk,
+            'keluar' => $data->total_keluar,
+            'success' => true,
+            'message' => 'Saldo bulan ini berhasil diambil'
+            ],
+        ]);
     }
 }
