@@ -9,7 +9,6 @@ $(document).ready(function () {
     loadTable(tahun, blok1); // Panggil loadTable dengan tahun yang sudah dipilih
 
     $("#btn_reload").on("click", function () {
-        alert("test");
         let tahun = $("#periode").val();
         let blok1 = $("#selectblok").val();
         loadTable(tahun, blok1);
