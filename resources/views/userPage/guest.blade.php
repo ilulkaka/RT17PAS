@@ -7,23 +7,24 @@
 @section('content_body')
     <div class="row">
         <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3 id="saldo">0</h3>
-
-                    <p>Saldo</p>
+                    <p>Saldo Akhir</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-bar"></i>
                 </div>
-                <a href="{{ url('keuangan/rpt/list_lpj') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="{{ url('keuangan/rpt/list_lpj') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a> --}}
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
-        <!-- ./col -->
+
         <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3 id="pemasukan_bulan_ini">0</h3>
@@ -32,51 +33,61 @@
                 <div class="icon">
                     <i class="fas fa-luggage-cart"></i>
                 </div>
-                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
-        <!-- ./col -->
+
         <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <!-- <h3>Detail</h3> -->
                     <h3 id="pengeluaran_bulan_ini">0</h3>
-
                     <p>Pengeluaran bulan ini</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-percent"></i>
                 </div>
-                <a href="{{ url('undermaintenance') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
-        <!-- ./col -->
+
         <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3 id="warga_terdaftar"></h3>
-
+                    <h3 id="warga_terdaftar">0</h3>
                     <p>Total Warga terdaftar</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-clock"></i>
                 </div>
-                <a href="{{ url('datas/list_warga') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                {{-- <a href="{{ url('datas/list_warga') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a> --}}
+                <a href="{{ url('undermaintenance') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
-        <!-- ./col -->
     </div>
+
+    <!-- Marquee -->
     <div class="col-md-12" style="margin-top: -15px">
         <marquee id="marqueeExpres" behavior="scroll" direction="left">
-            <b>
-                RT 17 PAS
-            </b>
+            <b>RT 17 PAS</b>
         </marquee>
+    </div>
+
+    <!-- Button List Iuran Warga -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ url('guest/list_iuran_warga') }}" class="btn btn-secondary btn-block rounded-0">
+                <i class="fas fa-money-bill-wave mr-2"></i>
+                List Iuran Warga
+            </a>
+        </div>
     </div>
 
 @stop

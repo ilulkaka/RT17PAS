@@ -15,14 +15,50 @@ class Dashboard extends Controller
         $tahun = date('Y');
         $tgl_now = date('d');
 
-        $saldo = DB::select("SELECT 
-        (COALESCE(a.nominal, 0) + COALESCE(b.masuk, 0) - COALESCE(c.keluar, 0)) AS saldo
+        $saldo = DB::select("
+            SELECT 
+                COALESCE(a.nominal, 0)
+                + COALESCE(b.masuk, 0)
+                - COALESCE(c.keluar, 0) AS saldo
             FROM 
-        (SELECT nominal FROM tb_beginning LIMIT 1) a
+                (
+                    SELECT nominal
+                    FROM tb_beginning
+                    WHERE periode = DATE_FORMAT(CURDATE(), '%Y-%m-01')
+                    LIMIT 1
+                ) a
             LEFT JOIN 
-        (SELECT SUM(nominal) AS masuk FROM tb_lpj WHERE jenis = 'Masuk') b ON 1=1
+                (
+                    SELECT SUM(nominal) AS masuk
+                    FROM tb_lpj
+                    WHERE jenis = 'Masuk'
+                    AND tgl_transaksi >= DATE_FORMAT(CURDATE(), '%Y-%m-01')
+                    AND tgl_transaksi < DATE_ADD(
+                            DATE_FORMAT(CURDATE(), '%Y-%m-01'),
+                            INTERVAL 1 MONTH
+                    )
+                ) b ON 1=1
             LEFT JOIN 
-        (SELECT SUM(nominal) AS keluar FROM tb_lpj WHERE jenis = 'Keluar') c ON 1=1");
+                (
+                    SELECT SUM(nominal) AS keluar
+                    FROM tb_lpj
+                    WHERE jenis = 'Keluar'
+                    AND tgl_transaksi >= DATE_FORMAT(CURDATE(), '%Y-%m-01')
+                    AND tgl_transaksi < DATE_ADD(
+                            DATE_FORMAT(CURDATE(), '%Y-%m-01'),
+                            INTERVAL 1 MONTH
+                    )
+                ) c ON 1=1
+        ");
+
+        // $saldo = DB::select("SELECT 
+        // (COALESCE(a.nominal, 0) + COALESCE(b.masuk, 0) - COALESCE(c.keluar, 0)) AS saldo
+        //     FROM 
+        // (SELECT nominal FROM tb_beginning LIMIT 1) a
+        //     LEFT JOIN 
+        // (SELECT SUM(nominal) AS masuk FROM tb_lpj WHERE jenis = 'Masuk') b ON 1=1
+        //     LEFT JOIN 
+        // (SELECT SUM(nominal) AS keluar FROM tb_lpj WHERE jenis = 'Keluar') c ON 1=1");
 
         $wargaTerdaftar = DB::table('tb_warga')
             ->where('status_warga', 'Terdaftar')

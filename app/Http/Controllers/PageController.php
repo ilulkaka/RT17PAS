@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\SleeveModel;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class PageController extends Controller
@@ -161,6 +162,52 @@ class PageController extends Controller
 
     public function listLpj(){
         return view('keuangan.list_lpj');
+    }
+
+    public function listIuranWarga(){
+        return view('guest.list_iuran_warga');
+    }
+
+    public function pdfListIuran($periode, Request $request)
+    {
+        $blok = $request->query('blok', 'All');
+
+        $iuran = DB::table('tb_iuran')
+            ->select(
+                'blok',
+                DB::raw('MONTH(periode) AS bulan'),
+                DB::raw('SUM(nominal) AS nominal')
+            )
+            ->whereYear('periode', $periode)
+            ->when($blok != 'All', function ($query) use ($blok) {
+                $query->where('blok', $blok);
+            })
+            ->groupBy(
+                'blok',
+                DB::raw('MONTH(periode)')
+            )
+            ->orderBy('blok')
+            ->orderBy(DB::raw('MONTH(periode)'))
+            ->get();
+
+        $iuranMap = [];
+
+        foreach ($iuran as $item) {
+            $iuranMap[$item->blok][$item->bulan] = $item->nominal;
+        }
+
+        $listBlok = $iuran
+            ->pluck('blok')
+            ->unique()
+            ->sort()
+            ->values();
+
+        return view('keuangan.pdf_list_iuran', compact(
+            'periode',
+            'blok',
+            'iuranMap',
+            'listBlok'
+        ));
     }
 
  

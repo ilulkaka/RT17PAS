@@ -15,8 +15,8 @@ Route::get('/sesion', [Usercontroller::class,'sesion']);
 
 //Route::get('/', [PageController::class,'home'])->middleware('auth:sanctum')->name('home');
 
+Route::get('/undermaintenance', [PageController::class,'underMaintenance']);
 Route::middleware(['auth:sanctum'])->group(function(){
-    Route::get('/undermaintenance', [PageController::class,'underMaintenance']);
     Route::get('/', [PageController::class,'home'])->name('home');
     Route::get('/profile', [PageController::class,'profile']);
     Route::get('produksi/ngreport', [PageController::class,'ngreport']);
@@ -68,6 +68,7 @@ Route::middleware(['checkability:admin'])->group(function(){
 // });
 
 Route::get('guest',[PageController::class,'guest']);
+Route::get('guest/list_iuran_warga',[PageController::class,'listIuranWarga']);
 Route::get('keuangan/rpt/list_lpj', [PageController::class,'listLpj']);
 
 Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
@@ -76,6 +77,7 @@ Route::middleware(['auth:sanctum','ability:admin,keuangan'])->group(function(){
     Route::get('keuangan/rpt/cetak_lpj/{tgl_awal}/{tgl_akhir}', [KeuanganController::class,'cetakLpj']);
 
     Route::get('keuangan/frm_iuran_warga', [PageController::class,'frmIuranWarga']);
+    Route::get('keuangan/pdf_list_iuran/{periode}',[PageController::class,'pdfListIuran']);
 });
 
 Route::middleware(['checkability:admin'])->group(function(){

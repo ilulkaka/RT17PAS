@@ -216,3 +216,7 @@ Route::get('/list_warga',[MobileController::class,'listWarga']);
 Route::get('/list_iuran_warga',[MobileController::class,'listIuranWarga']);
 Route::get('/list_blok',[MobileController::class,'listBlok']);
 Route::get('/saldo_bulan_ini',[MobileController::class,'saldoBulanIni']);
+
+Route::get('guest/list_iuran_warga',[KeuanganController::class,'listIuranWarga']);
+Route::get('guest/detail_iuran_warga',[KeuanganController::class,'detailIuranWarga']);
+Route::get('guest/get_blok',[KeuanganController::class,'getBlok']);
