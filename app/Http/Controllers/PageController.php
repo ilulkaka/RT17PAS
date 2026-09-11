@@ -168,47 +168,154 @@ class PageController extends Controller
         return view('guest.list_iuran_warga');
     }
 
-    public function pdfListIuran($periode, Request $request)
-    {
-        $blok = $request->query('blok', 'All');
+    // public function pdfListIuran($periode, Request $request)
+    // {
+    //     $blok = $request->query('blok', 'All');
 
-        $iuran = DB::table('tb_iuran')
-            ->select(
+    //     $iuran = DB::table('tb_iuran')
+    //         ->select(
+    //             'blok',
+    //             DB::raw('MONTH(periode) AS bulan'),
+    //             DB::raw('SUM(nominal) AS nominal')
+    //         )
+    //         ->whereYear('periode', $periode)
+    //         ->when($blok != 'All', function ($query) use ($blok) {
+    //             $query->where('blok', $blok);
+    //         })
+    //         ->groupBy(
+    //             'blok',
+    //             DB::raw('MONTH(periode)')
+    //         )
+    //         ->orderBy('blok')
+    //         ->orderBy(DB::raw('MONTH(periode)'))
+    //         ->get();
+
+    //     $iuranMap = [];
+
+    //     foreach ($iuran as $item) {
+    //         $iuranMap[$item->blok][$item->bulan] = $item->nominal;
+    //     }
+
+    //     $listBlok = $iuran
+    //         ->pluck('blok')
+    //         ->unique()
+    //         ->sort()
+    //         ->values();
+
+    //     return view('keuangan.pdf_list_iuran', compact(
+    //         'periode',
+    //         'blok',
+    //         'iuranMap',
+    //         'listBlok'
+    //     ));
+    // }
+
+        public function pdfListIuran($periode, Request $request)
+        {
+            $blok = $request->query('blok', 'All');
+
+            $iuran = DB::table('tb_iuran')
+                ->select(
+                    'blok',
+                    DB::raw('MONTH(periode) AS bulan'),
+                    DB::raw('SUM(nominal) AS nominal')
+                )
+                ->whereYear('periode', $periode)
+                ->when($blok != 'All', function ($query) use ($blok) {
+                    $query->where('blok', $blok);
+                })
+                ->groupBy(
+                    'blok',
+                    DB::raw('MONTH(periode)')
+                )
+                ->orderBy('blok')
+                ->orderBy(DB::raw('MONTH(periode)'))
+                ->get();
+
+            $iuranMap = [];
+
+            foreach ($iuran as $item) {
+                $iuranMap[$item->blok][$item->bulan] = $item->nominal;
+            }
+
+            $listBlok = $iuran
+                ->pluck('blok')
+                ->unique()
+                ->sort()
+                ->values();
+
+            // Generate PDF
+            $pdf = Pdf::loadView('keuangan.pdf_list_iuran', compact(
+                'periode',
                 'blok',
-                DB::raw('MONTH(periode) AS bulan'),
-                DB::raw('SUM(nominal) AS nominal')
-            )
-            ->whereYear('periode', $periode)
-            ->when($blok != 'All', function ($query) use ($blok) {
-                $query->where('blok', $blok);
-            })
-            ->groupBy(
-                'blok',
-                DB::raw('MONTH(periode)')
-            )
-            ->orderBy('blok')
-            ->orderBy(DB::raw('MONTH(periode)'))
-            ->get();
+                'iuranMap',
+                'listBlok'
+            ));
 
-        $iuranMap = [];
+            $pdf->setPaper('A4', 'landscape');
 
-        foreach ($iuran as $item) {
-            $iuranMap[$item->blok][$item->bulan] = $item->nominal;
+            // Render PDF terlebih dahulu
+            $pdf->render();
+
+            // Ambil canvas Dompdf
+            $canvas = $pdf->getDomPDF()->getCanvas();
+
+            $fontMetrics = $pdf->getDomPDF()->getFontMetrics();
+
+            $font = $fontMetrics->getFont('Arial');
+
+            $canvas->page_script(function (
+                $pageNumber,
+                $pageCount,
+                $canvas,
+                $fontMetrics
+            ) use ($font, $periode) {
+
+                $fontSize = 8;
+
+                /*
+                |--------------------------------------------------------------------------
+                | FOOTER KIRI
+                |--------------------------------------------------------------------------
+                */
+
+                $footerLeft = 'RT 17 PAS - List Iuran Warga - Periode ' . $periode;
+
+                $canvas->text(
+                    30,
+                    $canvas->get_height() - 25,
+                    $footerLeft,
+                    $font,
+                    $fontSize
+                );
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | FOOTER KANAN
+                |--------------------------------------------------------------------------
+                */
+
+                $footerRight = 'Halaman ' . $pageNumber . ' dari ' . $pageCount;
+
+                $textWidth = $fontMetrics->getTextWidth(
+                    $footerRight,
+                    $font,
+                    $fontSize
+                );
+
+                $canvas->text(
+                    $canvas->get_width() - $textWidth - 30,
+                    $canvas->get_height() - 25,
+                    $footerRight,
+                    $font,
+                    $fontSize
+                );
+            });
+
+            return $pdf->stream(
+                'list_iuran_' . $periode . '.pdf'
+            );
         }
-
-        $listBlok = $iuran
-            ->pluck('blok')
-            ->unique()
-            ->sort()
-            ->values();
-
-        return view('keuangan.pdf_list_iuran', compact(
-            'periode',
-            'blok',
-            'iuranMap',
-            'listBlok'
-        ));
-    }
-
  
 }
